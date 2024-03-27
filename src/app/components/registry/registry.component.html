@@ -1,1 +1,8 @@
-<p>registry works!</p>
+<form (ngSubmit)="registry()">
+  <input type="text" name="first-name" [(ngModel)]="firstName" required />
+  <input type="text" name="last-name" [(ngModel)]="lastName" required />
+  <input type="email" name="email" [(ngModel)]="email" required />
+  <input type="password" name="password" [(ngModel)]="password" required />
+  <input type="password" name="password2" [(ngModel)]="password2" required />
+  <button>Login</button>
+</form>
