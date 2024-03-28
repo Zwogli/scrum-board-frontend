@@ -11,7 +11,13 @@ export class LoginComponent {
 
   constructor() {}
 
-  login() {
+  async login() {
     // Logic communication with backend
+    let response = await this.loginWithUsernameAndPassword();
+    console.log('Login response: ', response);
+  }
+
+  loginWithUsernameAndPassword(){
+
   }
 }
