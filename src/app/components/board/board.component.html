@@ -1,42 +1,60 @@
 <div class="board">
   <div class="column">
-    <h2>Todos</h2>
+    <div class="headline">
+      <h2>Todos</h2>
+      <button>+</button>
+    </div>
     <ul id="board-column-todo">
       <li *ngFor="let task of todoTasks" [style.backgroundColor]="task.color">
-          {{ task.title }} <br />
-          {{ task.description }} <br />
-          {{ task.author }}
+        {{ task.title }} <br />
+        {{ task.description }} <br />
+        {{ task.author }}
       </li>
     </ul>
   </div>
   <div class="column">
-    <h2>In Progress</h2>
+    <div class="headline">
+      <h2>In progress</h2>
+      <button>+</button>
+    </div>
     <ul id="board-column-progress">
-        <li *ngFor="let task of progressTasks" [style.backgroundColor]="task.color">
-            {{ task.title }} <br />
-            {{ task.description }} <br />
-            {{ task.author }}
-        </li>
+      <li
+        *ngFor="let task of progressTasks"
+        [style.backgroundColor]="task.color"
+      >
+        {{ task.title }} <br />
+        {{ task.description }} <br />
+        {{ task.author }}
+      </li>
     </ul>
   </div>
   <div class="column">
-    <h2>Feedback</h2>
+    <div class="headline">
+      <h2>Feedback</h2>
+      <button>+</button>
+    </div>
     <ul id="board-column-feedback">
-        <li *ngFor="let task of feedbackTasks" [style.backgroundColor]="task.color">
-            {{ task.title }} <br />
-            {{ task.description }} <br />
-            {{ task.author }}
-        </li>
+      <li
+        *ngFor="let task of feedbackTasks"
+        [style.backgroundColor]="task.color"
+      >
+        {{ task.title }} <br />
+        {{ task.description }} <br />
+        {{ task.author }}
+      </li>
     </ul>
   </div>
   <div class="column">
-    <h2>Done</h2>
+    <div class="headline">
+      <h2>Done</h2>
+      <button>+</button>
+    </div>
     <ul id="board-column-done">
-        <li *ngFor="let task of doneTasks" [style.backgroundColor]="task.color">
-            {{ task.title }} <br />
-            {{ task.description }} <br />
-            {{ task.author }}
-        </li>
+      <li *ngFor="let task of doneTasks" [style.backgroundColor]="task.color">
+        {{ task.title }} <br />
+        {{ task.description }} <br />
+        {{ task.author }}
+      </li>
     </ul>
   </div>
 </div>

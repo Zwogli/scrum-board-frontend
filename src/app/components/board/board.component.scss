@@ -3,13 +3,28 @@
   height: 100dvh;
   background-color: lightgray;
   display: flex;
+  gap: 1rem;
+  padding: 0 1rem;
   .column {
     width: 25%;
     border: dashed grey;
-    margin: 1rem 0.5rem;
+    margin: 1rem 0;
     padding: 0.5rem;
-    h2 {
-      text-align: center;
+    .headline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      h2 {
+        text-align: center;
+        margin: unset;
+      }
+      button {
+        // margin: 0 0 1rem 0;
+        border: none;
+        background-color: lightgray;
+        font-size: 2rem;
+      }
     }
     ul {
       list-style: none;
