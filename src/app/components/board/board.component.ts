@@ -23,6 +23,10 @@ export class BoardComponent {
   parseTextToJson(result: any) {
     let tasksObj = JSON.parse(result);
     console.log('Show all tasks: ', tasksObj);
-    console.log('Show id: ', tasksObj[0].board_column);
+    this.renderColumns()
+  }
+
+  renderColumns(){
+    
   }
 }
