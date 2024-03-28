@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TaskInterface } from '../../models.ts/task.model';
 
 @Component({
   selector: 'app-board',
@@ -10,6 +11,11 @@ export class BoardComponent {
     method: 'GET',
     redirect: 'follow',
   };
+  allTasks: object[] = [];
+  todoTasks:TaskInterface[] = [];
+  progressTasks:TaskInterface[] = [];
+  feedbackTasks:TaskInterface[] = [];
+  doneTasks:TaskInterface[] = [];
 
   constructor() {}
 
@@ -22,11 +28,25 @@ export class BoardComponent {
 
   parseTextToJson(result: any) {
     let tasksObj = JSON.parse(result);
-    console.log('Show all tasks: ', tasksObj);
-    this.renderColumns()
+    this.allTasks.push(tasksObj);
+    this.filterColumns(tasksObj);
   }
 
-  renderColumns(){
-    
+  filterColumns(tasksObj: TaskInterface[]) {
+    console.log('Show tasksObj: ', tasksObj);
+
+    console.log('Show allTasks: ', this.allTasks);
+    this.todoTasks = tasksObj.filter(
+      (task) => task.board_column === 'board-column-todo'
+    );
+    this.progressTasks = tasksObj.filter(
+      (task) => task.board_column === 'board-column-progress'
+    );
+    this.feedbackTasks = tasksObj.filter(
+      (task) => task.board_column === 'board-column-feedback'
+    );
+    this.doneTasks = tasksObj.filter(
+      (task) => task.board_column === 'board-column-done'
+    );
   }
 }
