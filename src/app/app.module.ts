@@ -17,15 +17,10 @@ import { ContactsComponent } from './components/contacts/contacts.component';
     LoginComponent,
     RegistryComponent,
     BoardComponent,
-    ContactsComponent
+    ContactsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

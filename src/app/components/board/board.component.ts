@@ -12,10 +12,10 @@ export class BoardComponent {
     redirect: 'follow',
   };
   allTasks: object[] = [];
-  todoTasks:TaskInterface[] = [];
-  progressTasks:TaskInterface[] = [];
-  feedbackTasks:TaskInterface[] = [];
-  doneTasks:TaskInterface[] = [];
+  todoTasks: TaskInterface[] = [];
+  progressTasks: TaskInterface[] = [];
+  feedbackTasks: TaskInterface[] = [];
+  doneTasks: TaskInterface[] = [];
 
   constructor() {}
 
@@ -33,9 +33,8 @@ export class BoardComponent {
   }
 
   filterColumns(tasksObj: TaskInterface[]) {
-    console.log('Show tasksObj: ', tasksObj);
-
     console.log('Show allTasks: ', this.allTasks);
+
     this.todoTasks = tasksObj.filter(
       (task) => task.board_column === 'board-column-todo'
     );
@@ -48,5 +47,6 @@ export class BoardComponent {
     this.doneTasks = tasksObj.filter(
       (task) => task.board_column === 'board-column-done'
     );
+    console.log(this.todoTasks);
   }
 }
