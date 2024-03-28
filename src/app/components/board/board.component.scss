@@ -1,0 +1,15 @@
+.board {
+  width: 100dvw;
+  height: 100dvh;
+  background-color: lightgray;
+  display: flex;
+  .column {
+    width: 25%;
+    border: dashed grey;
+    margin: 1rem 0.5rem;
+    padding: 0.5rem;
+    h2 {
+      text-align: center;
+    }
+  }
+}
