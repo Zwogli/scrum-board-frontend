@@ -1,7 +1,7 @@
 .board {
   width: 100dvw;
   height: 100dvh;
-  background-color: lightgray;
+  background-color: var(--bg-color);
   display: flex;
   gap: 1rem;
   padding: 0 1rem;
@@ -22,7 +22,7 @@
       button {
         // margin: 0 0 1rem 0;
         border: none;
-        background-color: lightgray;
+        background-color: var(--bg-color);
         font-size: 2rem;
       }
     }
