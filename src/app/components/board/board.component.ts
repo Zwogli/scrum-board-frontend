@@ -33,8 +33,6 @@ export class BoardComponent {
   }
 
   filterColumns(tasksObj: TaskInterface[]) {
-    console.log('Show allTasks: ', this.allTasks);
-
     this.todoTasks = tasksObj.filter(
       (task) => task.board_column === 'board-column-todo'
     );
@@ -47,6 +45,5 @@ export class BoardComponent {
     this.doneTasks = tasksObj.filter(
       (task) => task.board_column === 'board-column-done'
     );
-    console.log(this.todoTasks);
   }
 }
