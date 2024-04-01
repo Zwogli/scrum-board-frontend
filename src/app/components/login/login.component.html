@@ -1,36 +1,38 @@
 <div class="card">
   <div class="card-body">
     <form (ngSubmit)="login()">
-      <fieldset id="fieldsetDiable">
-        <h1>Scrum-Board Login</h1>
-        <div class="mb-3">
-          <label for="usernameInput" class="form-label">Username</label>
-          <input
-            name="username"
-            [(ngModel)]="username"
-            type="text"
-            id="usernameInput"
-            class="form-control"
-            placeholder="Username"
-            required
-          />
-        </div>
+      <h1>Scrum-Board Login</h1>
+      <div class="mb-3">
+        <label for="usernameInput" class="form-label">Username</label>
+        <input
+          name="username"
+          [(ngModel)]="username"
+          type="text"
+          id="usernameInput"
+          class="form-control"
+          placeholder="Username"
+          [disabled]="!enabled"
+          required
+        />
+      </div>
 
-        <div class="mb-3">
-          <label for="passwordInput" class="form-label">Password</label>
-          <input
-            name="password"
-            [(ngModel)]="password"
-            type="password"
-            id="passwordInput"
-            class="form-control"
-            placeholder="Password"
-            required
-          />
-        </div>
+      <div class="mb-3">
+        <label for="passwordInput" class="form-label">Password</label>
+        <input
+          name="password"
+          [(ngModel)]="password"
+          type="password"
+          id="passwordInput"
+          class="form-control"
+          placeholder="Password"
+          [disabled]="!enabled"
+          required
+        />
+      </div>
 
-        <button type="submit" class="btn btn-primary">Login</button>
-      </fieldset>
+      <button type="submit" class="btn btn-primary" [disabled]="!enabled">
+        Login
+      </button>
     </form>
   </div>
 </div>

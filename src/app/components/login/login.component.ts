@@ -8,6 +8,7 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+  enabled: boolean = true;
   username: string = '';
   password: string = '';
 
@@ -15,15 +16,19 @@ export class LoginComponent {
 
   login() {
     // Logic communication with backend
+    this.activeForm(false);
     try {
       this.getLoginToken();
-      this.navigateByUrl('/tasks')
+      this.navigateByUrl('/tasks');
     } catch (e) {
+      debugger;
+      alert('Login fehlgeschlagen!');
       console.error(e);
+      this.activeForm(true);
     }
   }
 
-  async getLoginToken(){
+  async getLoginToken() {
     let response: any = await this.as.loginWithUsernameAndPassword(
       this.username,
       this.password
@@ -33,7 +38,11 @@ export class LoginComponent {
     sessionStorage.setItem('token', responseToken);
   }
 
-  navigateByUrl(url:string){
+  activeForm(boolean: boolean) {
+    this.enabled = boolean;
+  }
+
+  navigateByUrl(url: string) {
     this.router.navigateByUrl(url);
   }
 }
