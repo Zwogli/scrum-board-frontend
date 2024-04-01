@@ -11,7 +11,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthInterceptorService {
+export class AuthIntercepterService {
   constructor(private router: Router) {}
 
   intercept(
