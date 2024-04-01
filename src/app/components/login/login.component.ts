@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,20 +11,29 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private as: AuthService) {}
+  constructor(private as: AuthService, private router: Router) {}
 
-  async login() {
+  login() {
     // Logic communication with backend
     try {
-      let response = await this.as.loginWithUsernameAndPassword(
-        this.username,
-        this.password
-      );
-      console.log('Login response: ', response);
+      this.getLoginToken();
+      this.navigateByUrl('/tasks')
     } catch (e) {
       console.error(e);
     }
   }
 
+  async getLoginToken(){
+    let response: any = await this.as.loginWithUsernameAndPassword(
+      this.username,
+      this.password
+    );
+    console.log('Login response: ', response);
+    const responseToken = response.token;
+    sessionStorage.setItem('token', responseToken);
+  }
 
+  navigateByUrl(url:string){
+    this.router.navigateByUrl(url);
+  }
 }
