@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { lastValueFrom } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +10,12 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private as: AuthService) {}
 
   async login() {
     // Logic communication with backend
     try {
-      let response = await this.loginWithUsernameAndPassword(
+      let response = await this.as.loginWithUsernameAndPassword(
         this.username,
         this.password
       );
@@ -27,13 +25,5 @@ export class LoginComponent {
     }
   }
 
-  loginWithUsernameAndPassword(username: string, password: string) {
-    debugger;
-    const url = environment.baseUrl + '/login/';
-    const body = {
-      username: username,
-      password: password,
-    };
-    return lastValueFrom(this.http.post(url, body));
-  }
+
 }
