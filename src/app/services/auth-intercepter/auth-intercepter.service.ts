@@ -19,7 +19,6 @@ export class AuthIntercepterService {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const token = sessionStorage.getItem('token');
-
     if (token) {
       //If we have a token, we set it to the header
       request = request.clone({

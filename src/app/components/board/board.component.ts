@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { TaskInterface } from '../../models.ts/task.model';
+import { environment } from '../../../environments/environment';
+import { lastValueFrom } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-board',
@@ -11,26 +14,42 @@ export class BoardComponent {
     method: 'GET',
     redirect: 'follow',
   };
-  allTasks: object[] = [];
+  allTasks: any = [];
+  // allTasks: object[] = [];
   todoTasks: TaskInterface[] = [];
   progressTasks: TaskInterface[] = [];
   feedbackTasks: TaskInterface[] = [];
   doneTasks: TaskInterface[] = [];
+  error: string = '';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   async ngOnInit() {
-    await fetch('http://127.0.0.1:8000/tasks/', this.requestOptions)
+    try {
+      this.allTasks = await this.loadAllTasks();
+      // this.parseTextToJson(this.allTasks);
+      this.filterColumns(this.allTasks);
+    } catch (e) {
+      this.error = 'Fehler beim laden!';
+    }
+    /*  await fetch('http://127.0.0.1:8000/tasks/', this.requestOptions)
       .then((response) => response.text())
       .then((result) => this.parseTextToJson(result))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error)); */
   }
 
-  parseTextToJson(result: any) {
+  loadAllTasks() {
+    const url = environment.baseUrl + '/tasks/';
+    return lastValueFrom(
+      this.http.get(url) //, {headers: headers,}
+    );
+  }
+
+/*   parseTextToJson(result: any) {
     let tasksObj = JSON.parse(result);
     this.allTasks.push(tasksObj);
     this.filterColumns(tasksObj);
-  }
+  } */
 
   filterColumns(tasksObj: TaskInterface[]) {
     this.todoTasks = tasksObj.filter(
