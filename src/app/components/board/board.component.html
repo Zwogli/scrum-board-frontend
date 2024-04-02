@@ -4,7 +4,7 @@
   <div class="column">
     <div class="headline">
       <h2>Todos</h2>
-      <button>+</button>
+      <button class="btn btn-primary">+</button>
     </div>
     <ul id="board-column-todo">
       <li
@@ -16,7 +16,8 @@
         <h5 class="card-title">{{ task.title }}</h5>
         <div class="card-body">
           <p class="card-text">{{ task.description }}</p>
-          <p class="card-text">{{ task.author }}</p>
+          <p class="card-text">Due-date: {{ task.created_at }}</p>
+          <p class="card-text">Due-date: {{ task.due_date }}</p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </li>
@@ -25,7 +26,7 @@
   <div class="column">
     <div class="headline">
       <h2>In progress</h2>
-      <button>+</button>
+      <button class="btn btn-primary">+</button>
     </div>
     <ul id="board-column-progress">
       <li
@@ -37,7 +38,8 @@
         <h5 class="card-title">{{ task.title }}</h5>
         <div class="card-body">
           <p class="card-text">{{ task.description }}</p>
-          <p class="card-text">{{ task.author }}</p>
+          <p class="card-text">Due-date: {{ task.created_at }}</p>
+          <p class="card-text">Due-date: {{ task.due_date }}</p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </li>
@@ -46,7 +48,7 @@
   <div class="column">
     <div class="headline">
       <h2>Feedback</h2>
-      <button>+</button>
+      <button class="btn btn-primary">+</button>
     </div>
     <ul id="board-column-feedback">
       <li
@@ -58,7 +60,8 @@
         <h5 class="card-title">{{ task.title }}</h5>
         <div class="card-body">
           <p class="card-text">{{ task.description }}</p>
-          <p class="card-text">{{ task.author }}</p>
+          <p class="card-text">Due-date: {{ task.created_at }}</p>
+          <p class="card-text">Due-date: {{ task.due_date }}</p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </li>
@@ -67,7 +70,7 @@
   <div class="column">
     <div class="headline">
       <h2>Done</h2>
-      <button>+</button>
+      <button class="btn btn-primary">+</button>
     </div>
     <ul id="board-column-done">
       <li
@@ -79,7 +82,8 @@
         <h5 class="card-title">{{ task.title }}</h5>
         <div class="card-body">
           <p class="card-text">{{ task.description }}</p>
-          <p class="card-text">{{ task.author }}</p>
+          <p class="card-text">Due-date: {{ task.created_at }}</p>
+          <p class="card-text">Due-date: {{ task.due_date }}</p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </li>
