@@ -1,0 +1,14 @@
+.navbar {
+  background-color: var(--bg-color) !important;
+}
+.navbar-brand{
+    padding: unset !important;
+}
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  h1 {
+    margin: unset;
+  }
+}

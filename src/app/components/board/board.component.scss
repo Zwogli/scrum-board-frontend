@@ -1,6 +1,6 @@
 .board {
   width: 100dvw;
-  height: 100dvh;
+  height: calc(100dvh - 64px);
   background-color: var(--bg-color);
   display: flex;
   gap: 1rem;

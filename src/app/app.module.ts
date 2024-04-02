@@ -10,6 +10,7 @@ import { RegistryComponent } from './components/registry/registry.component';
 import { BoardComponent } from './components/board/board.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { AuthIntercepterService } from './services/auth-intercepter/auth-intercepter.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   // todo add components
@@ -19,6 +20,7 @@ import { AuthIntercepterService } from './services/auth-intercepter/auth-interce
     RegistryComponent,
     BoardComponent,
     ContactsComponent,
+    NavbarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [
