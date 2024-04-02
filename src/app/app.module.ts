@@ -13,6 +13,8 @@ import { AuthIntercepterService } from './services/auth-intercepter/auth-interce
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NewTaskComponent } from './components/new-task/new-task.component';
 import { NewTaskPrioComponent } from './components/new-task-prio/new-task-prio.component';
+import { SelectColorComponent } from './components/select-color/select-color.component';
+import { SelectColumnComponent } from './components/select-column/select-column.component';
 
 @NgModule({
   // todo add components
@@ -25,6 +27,8 @@ import { NewTaskPrioComponent } from './components/new-task-prio/new-task-prio.c
     NavbarComponent,
     NewTaskComponent,
     NewTaskPrioComponent,
+    SelectColorComponent,
+    SelectColumnComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

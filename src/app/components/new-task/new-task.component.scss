@@ -32,9 +32,11 @@ app-new-task-prio {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  select {
-    max-width: 45%;
-  }
+}
+
+app-select-column,
+app-select-color {
+  width: 45%;
 }
 
 .form-select {
