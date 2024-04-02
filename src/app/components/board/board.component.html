@@ -9,7 +9,7 @@
     <ul id="board-column-todo">
       <li
         *ngFor="let task of todoTasks"
-        [style.backgroundColor]="task.color"
+        [style.backgroundColor]="getCardBackgroundColor(task.color)"
         class="card"
         style="width: 18rem"
       >
@@ -30,8 +30,8 @@
     <ul id="board-column-progress">
       <li
         *ngFor="let task of progressTasks"
-        [style.backgroundColor]="task.color"
-        class="card"
+        [style.backgroundColor]="getCardBackgroundColor(task.color)"
+        class="card card-color"
         style="width: 18rem"
       >
         <h5 class="card-title">{{ task.title }}</h5>
