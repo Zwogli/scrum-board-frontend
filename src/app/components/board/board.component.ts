@@ -14,8 +14,7 @@ export class BoardComponent {
     method: 'GET',
     redirect: 'follow',
   };
-  allTasks: any = [];
-  // allTasks: object[] = [];
+  allTasks: any = []; // allTasks: object[] = [];
   todoTasks: TaskInterface[] = [];
   progressTasks: TaskInterface[] = [];
   feedbackTasks: TaskInterface[] = [];
@@ -27,31 +26,26 @@ export class BoardComponent {
   async ngOnInit() {
     try {
       this.allTasks = await this.loadAllTasks();
-      // this.parseTextToJson(this.allTasks);
       this.filterColumns(this.allTasks);
     } catch (e) {
       this.error = 'Fehler beim laden!';
     }
-    /*  await fetch('http://127.0.0.1:8000/tasks/', this.requestOptions)
-      .then((response) => response.text())
-      .then((result) => this.parseTextToJson(result))
-      .catch((error) => console.error(error)); */
   }
 
   loadAllTasks() {
+    /**
+     * Subscribe with "lastValueFrom" the http.get() Observable
+     */
     const url = environment.baseUrl + '/tasks/';
     return lastValueFrom(
       this.http.get(url) //, {headers: headers,}
     );
   }
 
-/*   parseTextToJson(result: any) {
-    let tasksObj = JSON.parse(result);
-    this.allTasks.push(tasksObj);
-    this.filterColumns(tasksObj);
-  } */
-
   filterColumns(tasksObj: TaskInterface[]) {
+    /**
+     * Filter all objects for visual display in the correct column
+     */
     this.todoTasks = tasksObj.filter(
       (task) => task.board_column === 'board-column-todo'
     );
