@@ -19,7 +19,24 @@ app-new-task-prio {
   width: 50dvw;
   min-width: 300px;
   max-width: 800px;
-  button {
-    margin-top: 1rem;
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      margin-top: 1rem;
+    }
   }
+}
+.container--form-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  select {
+    max-width: 45%;
+  }
+}
+
+.form-select {
+  margin-bottom: 1rem;
 }
