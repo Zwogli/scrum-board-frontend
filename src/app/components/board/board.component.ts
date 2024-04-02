@@ -27,7 +27,7 @@ export class BoardComponent {
     try {
       this.allTasks = await this.loadAllTasks();
       this.filterColumns(this.allTasks);
-      console.log('Task Object: ', this.allTasks);
+      // console.log('Task Object: ', this.allTasks);
     } catch (e) {
       this.error = 'Fehler beim laden!';
     }
@@ -62,22 +62,6 @@ export class BoardComponent {
   }
 
   getCardBackgroundColor(color: string): string {
-    console.log(color);
-
     return `var(--card-bg-${color})`;
-    /*     switch (color) {
-      case 'red':
-        return 'var(--card-bg-red)';
-      case 'green':
-        return 'var(--card-bg-green)';
-      case 'blue':
-        return 'var(--card-bg-blue)';
-      case 'yellow':
-        return 'var(--card-bg-yellow)';
-      case 'cyan':
-        return 'var(--card-bg-cyan)';
-      default:
-        return 'initial'; // Default-Fallback-Farbe
-    } */
   }
 }
