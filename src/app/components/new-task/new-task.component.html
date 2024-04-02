@@ -1,39 +1,43 @@
 <div class="overlay">
   <div class="card">
-    <div class="card-body">
-      <h2>New Task</h2>
-      <div class="mb-3">
-        <label for="formGroupTitle" class="form-label">Titel</label>
-        <input
-          type="text"
-          class="form-control"
-          id="formGroupTitle"
-          placeholder="Titel"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="formGroupDescription" class="form-label">Description</label>
-        <textarea
-          class="form-control"
-          name=""
-          id="formGroupDescription"
-          cols="30"
-          rows="5"
-          placeholder="Description"
-        ></textarea>
-      </div>
+    <form action="">
+      <div class="card-body">
+        <h2>New Task</h2>
+        <div class="mb-3">
+          <label for="formGroupTitle" class="form-label">Titel</label>
+          <input
+            type="text"
+            class="form-control"
+            id="formGroupTitle"
+            placeholder="Titel"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="formGroupDescription" class="form-label"
+            >Description</label
+          >
+          <textarea
+            class="form-control"
+            name=""
+            id="formGroupDescription"
+            cols="30"
+            rows="5"
+            placeholder="Description"
+          ></textarea>
+        </div>
 
-      <div class="container--form-select">
-        <app-select-column></app-select-column>
-        <app-select-color></app-select-color>
-      </div>
+        <div class="container--form-select">
+          <app-select-column></app-select-column>
+          <app-select-color></app-select-color>
+        </div>
 
-      <label>Priority</label>
-      <app-new-task-prio></app-new-task-prio>
+        <label>Priority</label>
+        <app-new-task-prio></app-new-task-prio>
 
-      <div class="container">
-        <button class="btn btn-primary">Add new task</button>
+        <div class="container">
+          <button class="btn btn-primary">Add new task</button>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>
