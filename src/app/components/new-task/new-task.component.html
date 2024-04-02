@@ -1,6 +1,6 @@
 <div class="overlay">
   <div class="card">
-    <form action="">
+    <form (ngSubmit)="sendForm()">
       <div class="card-body">
         <h2>New Task</h2>
         <div class="mb-3">
@@ -9,6 +9,8 @@
             type="text"
             class="form-control"
             id="formGroupTitle"
+            [(ngModel)]="formTitle"
+            name="formTitle"
             placeholder="Titel"
           />
         </div>
@@ -20,6 +22,8 @@
             class="form-control"
             name=""
             id="formGroupDescription"
+            [(ngModel)]="formDescription"
+            name="formDescription"
             cols="30"
             rows="5"
             placeholder="Description"
@@ -35,7 +39,8 @@
         <app-new-task-prio></app-new-task-prio>
 
         <div class="container">
-          <button class="btn btn-primary">Add new task</button>
+          <button type="submit" class="btn btn-primary">Add new task</button>
+          <!--[disabled]="!enabled"-->
         </div>
       </div>
     </form>
