@@ -1,0 +1,15 @@
+.overlay {
+  width: 100dvw;
+  height: 100dvh;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-overlay);
+  backdrop-filter: blur(2px);
+}
+
+.card {
+  max-width: 500px;
+}

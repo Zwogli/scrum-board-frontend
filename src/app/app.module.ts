@@ -11,6 +11,7 @@ import { BoardComponent } from './components/board/board.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { AuthIntercepterService } from './services/auth-intercepter/auth-intercepter.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { NewTaskComponent } from './components/new-task/new-task.component';
 
 @NgModule({
   // todo add components
@@ -21,6 +22,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     BoardComponent,
     ContactsComponent,
     NavbarComponent,
+    NewTaskComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [
