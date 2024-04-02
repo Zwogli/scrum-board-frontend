@@ -5,10 +5,18 @@
       <button>+</button>
     </div>
     <ul id="board-column-todo">
-      <li *ngFor="let task of todoTasks" [style.backgroundColor]="task.color">
-        {{ task.title }} <br />
-        {{ task.description }} <br />
-        {{ task.author }}
+      <li
+        *ngFor="let task of todoTasks"
+        [style.backgroundColor]="task.color"
+        class="card"
+        style="width: 18rem"
+      >
+        <h5 class="card-title">{{ task.title }}</h5>
+        <div class="card-body">
+          <p class="card-text">{{ task.description }}</p>
+          <p class="card-text">{{ task.author }}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
       </li>
     </ul>
   </div>
@@ -21,10 +29,15 @@
       <li
         *ngFor="let task of progressTasks"
         [style.backgroundColor]="task.color"
+        class="card"
+        style="width: 18rem"
       >
-        {{ task.title }} <br />
-        {{ task.description }} <br />
-        {{ task.author }}
+        <h5 class="card-title">{{ task.title }}</h5>
+        <div class="card-body">
+          <p class="card-text">{{ task.description }}</p>
+          <p class="card-text">{{ task.author }}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
       </li>
     </ul>
   </div>
@@ -37,10 +50,15 @@
       <li
         *ngFor="let task of feedbackTasks"
         [style.backgroundColor]="task.color"
+        class="card"
+        style="width: 18rem"
       >
-        {{ task.title }} <br />
-        {{ task.description }} <br />
-        {{ task.author }}
+        <h5 class="card-title">{{ task.title }}</h5>
+        <div class="card-body">
+          <p class="card-text">{{ task.description }}</p>
+          <p class="card-text">{{ task.author }}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
       </li>
     </ul>
   </div>
@@ -50,10 +68,18 @@
       <button>+</button>
     </div>
     <ul id="board-column-done">
-      <li *ngFor="let task of doneTasks" [style.backgroundColor]="task.color">
-        {{ task.title }} <br />
-        {{ task.description }} <br />
-        {{ task.author }}
+      <li
+        *ngFor="let task of doneTasks"
+        [style.backgroundColor]="task.color"
+        class="card"
+        style="width: 18rem"
+      >
+        <h5 class="card-title">{{ task.title }}</h5>
+        <div class="card-body">
+          <p class="card-text">{{ task.description }}</p>
+          <p class="card-text">{{ task.author }}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
       </li>
     </ul>
   </div>
