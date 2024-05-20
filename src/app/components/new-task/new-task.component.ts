@@ -14,6 +14,8 @@ export class NewTaskComponent {
   formColumn: string = '';
   formColor: string = '';
   formPriority: string = '';
+  currentDate: Date = new Date();
+  isoDateString: string = this.currentDate.toISOString();
 
   constructor(private overlayService: OverlayService) {}
 
@@ -26,6 +28,7 @@ export class NewTaskComponent {
       board_column: this.formColumn,
       color: this.formColor,
       priority: this.formPriority,
+      created_at: this.isoDateString,
     };
 
     // Logge das Objekt mit den Titel- und Beschreibungsdaten
