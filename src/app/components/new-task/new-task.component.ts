@@ -13,6 +13,7 @@ export class NewTaskComponent {
   formDescription: string = '';
   formColumn: string = '';
   formColor: string = '';
+  formPriority: string = '';
 
   constructor(private overlayService: OverlayService) {}
 
@@ -24,6 +25,7 @@ export class NewTaskComponent {
       description: this.formDescription,
       board_column: this.formColumn,
       color: this.formColor,
+      priority: this.formPriority,
     };
 
     // Logge das Objekt mit den Titel- und Beschreibungsdaten
@@ -36,6 +38,10 @@ export class NewTaskComponent {
 
   onSelectedColorChange(selectedColor: string) {
     this.formColor = selectedColor; // Aktualisiere das selectedColumn-Attribut
+  }
+
+  updatePriority(priority: string) {
+    this.formPriority = priority;
   }
 
   toggleOverlay() {

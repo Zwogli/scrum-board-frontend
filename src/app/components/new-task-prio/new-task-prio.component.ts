@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-new-task-prio',
   templateUrl: './new-task-prio.component.html',
-  styleUrl: './new-task-prio.component.scss'
+  styleUrls: ['./new-task-prio.component.scss']
 })
 export class NewTaskPrioComponent {
+  @Output() priorityChange = new EventEmitter<string>();
 
+  setPriority(priority: string) {
+    this.priorityChange.emit(priority);
+  }
 }

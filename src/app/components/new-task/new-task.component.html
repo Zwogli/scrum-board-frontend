@@ -40,7 +40,7 @@
         </div>
 
         <label>Priority</label>
-        <app-new-task-prio></app-new-task-prio>
+        <app-new-task-prio (priorityChange)="updatePriority($event)"></app-new-task-prio>
 
         <div class="container">
           <button type="submit" class="btn btn-primary">Add new task</button>
