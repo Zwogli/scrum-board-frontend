@@ -1,10 +1,11 @@
+<label for="selectColumn">Task column:</label>
 <select
   [(ngModel)]="selectedColumn"
   (click)="onColumnSelect()"
+  id="selectColumn"
   class="form-select"
   aria-label="Default select example"
 >
-  <option selected>Task column</option>
   <option value="board-column-todo">To Do</option>
   <option value="board-column-progress">Progress</option>
   <option value="board-column-feedback">Feedback</option>

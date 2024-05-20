@@ -1,10 +1,11 @@
+<label for="selectColor">Task column:</label>
 <select
   [(ngModel)]="selectedColor"
   (click)="onColorSelect()"
+  id="selectColor"
   class="form-select"
   aria-label="Default select example"
 >
-  <option selected>Task Color</option>
   <option value="red" style="background-color: var(--card-bg-red)">Red</option>
   <option value="green" style="background-color: var(--card-bg-green)">
     Green

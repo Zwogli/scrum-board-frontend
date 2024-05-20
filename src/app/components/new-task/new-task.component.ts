@@ -11,24 +11,23 @@ export class NewTaskComponent {
   form: Partial<TaskInterface> = {}; // Partial<TaskInterface> ermöglicht es uns, nur einige Felder des Interface zu verwenden
   formTitle: string = '';
   formDescription: string = '';
-  formColumn: string = '';
-  formColor: string = '';
-  formPriority: string = '';
+  formColumn: string = 'board-column-todo';
+  formColor: string = 'red';
+  formPriority: string = 'Low';
   currentDate: Date = new Date();
   isoDateString: string = this.currentDate.toISOString();
 
   constructor(private overlayService: OverlayService) {}
-
 
   sendForm() {
     // Erstelle ein Objekt, um nur den Titel und die Beschreibung zu speichern
     const formData: Partial<TaskInterface> = {
       title: this.formTitle,
       description: this.formDescription,
-      board_column: this.formColumn,
-      color: this.formColor,
-      priority: this.formPriority,
       created_at: this.isoDateString,
+      priority: this.formPriority,
+      color: this.formColor,
+      board_column: this.formColumn,
     };
 
     // Logge das Objekt mit den Titel- und Beschreibungsdaten
@@ -44,7 +43,7 @@ export class NewTaskComponent {
   }
 
   updatePriority(priority: string) {
-    this.formPriority = priority;
+    this.formPriority = priority; // Aktualisiere das selectedPriority-Attribut
   }
 
   toggleOverlay() {
