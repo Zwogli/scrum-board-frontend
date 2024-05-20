@@ -76,8 +76,4 @@ export class BoardComponent {
   toggleOverlay() {
     this.overlayService.toggleOverlay();
   }
-
-  openOverlay() {
-    this.overlayService.openOverlay();
-  }
 }

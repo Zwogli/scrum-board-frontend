@@ -16,17 +16,5 @@ export class OverlayService {
       this.overlayState = false;
       this.overlayState$.next(this.overlayState);
     }
-    console.log('toggleOverlay', this.overlayState);
-  }
-
-  openOverlay() {
-    this.overlayState = true;
-    this.overlayState$.next(this.overlayState);
-    console.log('openOverlay', this.overlayState);
-  }
-
-  closeOverlay() {
-    this.overlayState = false;
-    this.overlayState$.next(this.overlayState);
   }
 }
