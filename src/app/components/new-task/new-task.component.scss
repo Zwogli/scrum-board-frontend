@@ -42,3 +42,14 @@ app-select-color {
 .form-select {
   margin-bottom: 1rem;
 }
+
+.card-body__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
+}
