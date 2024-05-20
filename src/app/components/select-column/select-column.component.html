@@ -1,4 +1,9 @@
-<select [(ngModel)]="selectedColumn" class="form-select" aria-label="Default select example">
+<select
+  [(ngModel)]="selectedColumn"
+  (click)="onColumnSelect()"
+  class="form-select"
+  aria-label="Default select example"
+>
   <option selected>Task column</option>
   <option value="board-column-todo">To Do</option>
   <option value="board-column-progress">Progress</option>

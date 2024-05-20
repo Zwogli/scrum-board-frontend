@@ -12,6 +12,5 @@ export class SelectColumnComponent {
 
   onColumnSelect() {
     this.selectedColumnChange.emit(this.selectedColumn); // Auslösen des Ereignisses mit dem ausgewählten Wert
-    console.log('Slected-column: ', this.selectedColumn);
   }
 }
