@@ -11,6 +11,7 @@ export class NewTaskComponent {
   form: Partial<TaskInterface> = {}; // Partial<TaskInterface> ermöglicht es uns, nur einige Felder des Interface zu verwenden
   formTitle: string = '';
   formDescription: string = '';
+  selectedColumn: string = '';
 
   constructor(private overlayService: OverlayService) {}
 
@@ -20,10 +21,15 @@ export class NewTaskComponent {
     const formData: Partial<TaskInterface> = {
       title: this.formTitle,
       description: this.formDescription,
+      board_column: this.selectedColumn,
     };
 
     // Logge das Objekt mit den Titel- und Beschreibungsdaten
     console.log('Form Data: ', formData);
+  }
+
+  onSelectedColumnChange(selectedColumn: string) {
+    this.selectedColumn = selectedColumn; // Aktualisiere das selectedColumn-Attribut
   }
 
   toggleOverlay() {

@@ -35,7 +35,7 @@
         </div>
 
         <div class="container--form-select">
-          <app-select-column></app-select-column>
+          <app-select-column (selectedColumnChange)="onSelectedColumnChange($event)"></app-select-column>
           <app-select-color></app-select-color>
         </div>
 
