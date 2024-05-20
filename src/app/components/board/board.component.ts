@@ -3,6 +3,7 @@ import { TaskInterface } from '../../models.ts/task.model';
 import { environment } from '../../../environments/environment';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { OverlayService } from '../../services/overlay/overlay.service';
 
 @Component({
   selector: 'app-board',
@@ -20,10 +21,17 @@ export class BoardComponent {
   feedbackTasks: TaskInterface[] = [];
   doneTasks: TaskInterface[] = [];
   error: string = '';
+  overlayState: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private overlayService: OverlayService
+  ) {}
 
   async ngOnInit() {
+    this.overlayService.overlayState$.subscribe(state => {
+      this.overlayState = state;
+    })
     try {
       this.allTasks = await this.loadAllTasks();
       this.filterColumns(this.allTasks);
@@ -63,5 +71,13 @@ export class BoardComponent {
 
   getCardBackgroundColor(color: string): string {
     return `var(--card-bg-${color})`;
+  }
+
+  toggleOverlay() {
+    this.overlayService.toggleOverlay();
+  }
+
+  openOverlay() {
+    this.overlayService.openOverlay();
   }
 }

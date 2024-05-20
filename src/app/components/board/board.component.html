@@ -4,7 +4,7 @@
   <div class="column">
     <div class="headline">
       <h2>Todos</h2>
-      <button class="btn btn-primary">+</button>
+      <button (click)="toggleOverlay()" class="btn btn-primary">+</button>
     </div>
     <ul id="board-column-todo">
       <li
@@ -26,7 +26,7 @@
   <div class="column">
     <div class="headline">
       <h2>In progress</h2>
-      <button class="btn btn-primary">+</button>
+      <button (click)="toggleOverlay()" class="btn btn-primary">+</button>
     </div>
     <ul id="board-column-progress">
       <li
@@ -48,7 +48,7 @@
   <div class="column">
     <div class="headline">
       <h2>Feedback</h2>
-      <button class="btn btn-primary">+</button>
+      <button (click)="toggleOverlay()" class="btn btn-primary">+</button>
     </div>
     <ul id="board-column-feedback">
       <li
@@ -70,7 +70,7 @@
   <div class="column">
     <div class="headline">
       <h2>Done</h2>
-      <button class="btn btn-primary">+</button>
+      <button (click)="toggleOverlay()" class="btn btn-primary">+</button>
     </div>
     <ul id="board-column-done">
       <li
@@ -91,4 +91,4 @@
   </div>
 </div>
 
-<app-new-task></app-new-task>
+<app-new-task *ngIf="overlayState"></app-new-task>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskInterface } from '../../models.ts/task.model';
+import { OverlayService } from '../../services/overlay/overlay.service';
 
 @Component({
   selector: 'app-new-task',
@@ -11,7 +12,8 @@ export class NewTaskComponent {
   formTitle: string = '';
   formDescription: string = '';
 
-  constructor() {}
+  constructor(private overlayService: OverlayService) {}
+
 
   sendForm() {
     // Erstelle ein Objekt, um nur den Titel und die Beschreibung zu speichern
@@ -22,5 +24,9 @@ export class NewTaskComponent {
 
     // Logge das Objekt mit den Titel- und Beschreibungsdaten
     console.log('Form Data: ', formData);
+  }
+
+  toggleOverlay() {
+    this.overlayService.toggleOverlay();
   }
 }
