@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,8 +7,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrl: './new-task-due-date.component.scss',
 })
 export class NewTaskDueDateComponent {
+  @Output() dueDateChange = new EventEmitter<string>();
   dateForm: FormGroup;
-  minDate: string = '';
+  minDate: string = new Date().toISOString().split('T')[0]; // Das aktuelle Datum im ISO-Format ohne Zeit;
 
   constructor(private fb: FormBuilder) {
     // Initialisiere das FormGroup im Konstruktor
@@ -25,5 +26,9 @@ export class NewTaskDueDateComponent {
     const year = today.getFullYear();
 
     this.minDate = `${year}-${month}-${day}`;
+  }
+
+  onDueDateChange(event: any) {
+    this.dueDateChange.emit(event.target.value);
   }
 }

@@ -1,4 +1,9 @@
 <div>
   <label for="due-date">Due Date:</label>
-  <input id="due-date" type="date" [min]="minDate" />
+  <input
+    id="due-date"
+    type="date"
+    [min]="minDate"
+    (change)="onDueDateChange($event)"
+  />
 </div>

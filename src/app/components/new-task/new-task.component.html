@@ -47,7 +47,9 @@
           <app-new-task-prio
             (priorityChange)="updatePriority($event)"
           ></app-new-task-prio>
-          <app-new-task-due-date></app-new-task-due-date>
+          <app-new-task-due-date
+            (dueDateChange)="onDueDateChange($event)"
+          ></app-new-task-due-date>
         </div>
 
         <div class="container">

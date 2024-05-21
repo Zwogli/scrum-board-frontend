@@ -16,6 +16,7 @@ export class NewTaskComponent {
   formPriority: string = 'Low';
   currentDate: Date = new Date();
   isoDateString: string = this.currentDate.toISOString();
+  formDue_date: string = '';
 
   constructor(private overlayService: OverlayService) {}
 
@@ -25,6 +26,7 @@ export class NewTaskComponent {
       title: this.formTitle,
       description: this.formDescription,
       created_at: this.isoDateString,
+      due_date: this.formDue_date,
       priority: this.formPriority,
       color: this.formColor,
       board_column: this.formColumn,
@@ -44,6 +46,10 @@ export class NewTaskComponent {
 
   updatePriority(priority: string) {
     this.formPriority = priority; // Aktualisiere das selectedPriority-Attribut
+  }
+
+  onDueDateChange(newDueDate: string) {
+    this.formDue_date = newDueDate;
   }
 
   toggleOverlay() {
