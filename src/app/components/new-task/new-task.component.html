@@ -3,7 +3,7 @@
     <form (ngSubmit)="sendForm()">
       <div (click)="$event.stopPropagation()" class="card-body">
         <div class="card-body__header">
-          <h2>New Task</h2>
+          <h2>New Task:</h2>
           <p (click)="toggleOverlay()" class="btn btn-primary">X</p>
         </div>
 
@@ -20,7 +20,7 @@
         </div>
         <div class="mb-3">
           <label for="formGroupDescription" class="form-label"
-            >Description</label
+            >Description:</label
           >
           <textarea
             class="form-control"
