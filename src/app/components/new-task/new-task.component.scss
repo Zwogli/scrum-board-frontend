@@ -49,3 +49,14 @@ app-select-color {
     cursor: pointer;
   }
 }
+
+input.ng-invalid.ng-touched,
+input.ng-invalid.ng-dirty,
+input.ng-invalid.ng-submitted {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}

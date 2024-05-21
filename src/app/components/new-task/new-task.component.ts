@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TaskInterface } from '../../models.ts/task.model';
 import { OverlayService } from '../../services/overlay/overlay.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-new-task',
@@ -17,10 +18,15 @@ export class NewTaskComponent {
   currentDate: Date = new Date();
   isoDateString: string = this.currentDate.toISOString();
   formDue_date: string = '';
+  submitted = false;
 
-  constructor(private overlayService: OverlayService) {}
-
+  constructor(private overlayService: OverlayService) {
+  }
   sendForm() {
+    const formGroupTitle = document.getElementById('formGroupTitle');
+    this.submitted = true;
+
+    if (this.checkFormFields()) {
     // Erstelle ein Objekt, um nur den Titel und die Beschreibung zu speichern
     const formData: Partial<TaskInterface> = {
       title: this.formTitle,
@@ -31,9 +37,20 @@ export class NewTaskComponent {
       color: this.formColor,
       board_column: this.formColumn,
     };
+      // Logge das Objekt mit den Titel- und Beschreibungsdaten
+      console.log('Form Data: ', formData);
 
-    // Logge das Objekt mit den Titel- und Beschreibungsdaten
-    console.log('Form Data: ', formData);
+    } else {
+      if(formGroupTitle){
+        // Der Titel ist leer, füge einen roten Rahmen hinzu
+        formGroupTitle.style.border = '1px solid red';
+        console.log('Wrong Form Title!');
+      }
+    }
+  }
+
+  checkFormFields(): boolean {
+    return this.formTitle !== '';
   }
 
   onSelectedColumnChange(selectedColumn: string) {

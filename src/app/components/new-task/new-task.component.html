@@ -16,7 +16,15 @@
             [(ngModel)]="formTitle"
             name="formTitle"
             placeholder="Titel"
+            #formTitleField="ngModel"
+            required
           />
+          <div
+            *ngIf="formTitleField.invalid && (formTitleField.dirty || formTitleField.touched || submitted)"
+            class="error-message"
+          >
+            Das Feld darf nicht leer sein.
+          </div>
         </div>
         <div class="mb-3">
           <label for="formGroupDescription" class="form-label"
