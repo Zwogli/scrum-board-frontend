@@ -3,12 +3,12 @@
     <form (ngSubmit)="sendForm()">
       <div (click)="$event.stopPropagation()" class="card-body">
         <div class="card-body__header">
-          <h2>New Task:</h2>
+          <h2>New Task</h2>
           <p (click)="toggleOverlay()" class="btn btn-primary">X</p>
         </div>
 
         <div class="mb-3">
-          <label for="formGroupTitle" class="form-label">Titel</label>
+          <label for="formGroupTitle" class="form-label">Titel:</label>
           <input
             type="text"
             class="form-control"
