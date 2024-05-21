@@ -37,19 +37,19 @@ export class NewTaskComponent {
   }
 
   onSelectedColumnChange(selectedColumn: string) {
-    this.formColumn = selectedColumn; // Aktualisiere das selectedColumn-Attribut
+    this.formColumn = selectedColumn; // update selectedColumn-attribute
   }
 
   onSelectedColorChange(selectedColor: string) {
-    this.formColor = selectedColor; // Aktualisiere das selectedColumn-Attribut
+    this.formColor = selectedColor; // update selectedColumn-attribute
   }
 
   updatePriority(priority: string) {
-    this.formPriority = priority; // Aktualisiere das selectedPriority-Attribut
+    this.formPriority = priority; // update selectedPriority-attribute
   }
 
   onDueDateChange(newDueDate: string) {
-    this.formDue_date = newDueDate;
+    this.formDue_date = newDueDate; // update due-date-attribute
   }
 
   toggleOverlay() {
