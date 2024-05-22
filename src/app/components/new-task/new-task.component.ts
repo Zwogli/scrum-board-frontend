@@ -16,30 +16,34 @@ export class NewTaskComponent {
   formColor: string = 'red';
   formPriority: string = 'Low';
   currentDate: Date = new Date();
+  currentDateFormatted: string = this.dateFormatter();
   isoDateString: string = this.currentDate.toISOString();
   formDue_date: string = '';
   submitted = false;
   formGroupTitle = document.getElementById('formGroupTitle');
 
   constructor(private overlayService: OverlayService) {}
+
+  dateFormatter() {
+    return new Date().toISOString().split('T')[0];
+  }
+
   submitForm() {
     this.submitted = true;
 
     if (this.checkFormFields()) {
-      if (this.formGroupTitle) {
-        this.formGroupTitle.style.border = '';
-      }
+      this.removeErrorManager();
       this.sendForm();
     } else {
-      if (this.formGroupTitle) {
-        this.formGroupTitle.style.border = '1px solid red';
-        console.error('Send Form: Something went wrong! ');
-      }
+      console.error('Send Form: Something went wrong! ');
+      this.errorManager();
     }
   }
 
   checkFormFields(): boolean {
-    return this.formTitle !== '';
+    const comparableDue_Date = this.formDue_date.replace(/-/g, '');
+    const comparableCurrentDate = this.currentDateFormatted.replace(/-/g, '');
+    return this.formTitle !== '' && comparableDue_Date > comparableCurrentDate;
   }
 
   createFormObject() {
@@ -57,6 +61,18 @@ export class NewTaskComponent {
   sendForm() {
     const formData: Partial<TaskInterface> = this.createFormObject();
     console.log('Log: Send Formdata: ', formData);
+  }
+
+  errorManager() {
+    if (this.formGroupTitle) {
+      this.formGroupTitle.style.border = '1px solid red';
+    }
+  }
+
+  removeErrorManager() {
+    if (this.formGroupTitle) {
+      this.formGroupTitle.style.border = '';
+    }
   }
 
   onSelectedColumnChange(selectedColumn: string) {
