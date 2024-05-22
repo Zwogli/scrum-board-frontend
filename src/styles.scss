@@ -1,12 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --bg-overlay: rgba(0,0, 0, 0.4);
-  --bg-color: rgb(232, 230, 230);
+  --bg-overlay: rgba(0, 0, 0, 0.4);
+  // --bg-color: rgb(232, 230, 230);
+  --bg-color: var(--color-third);
   --card-bg-red: rgba(255, 0, 0, 0.4);
-  --card-bg-green:rgba(60, 179, 113, 0.4);
-  --card-bg-blue:rgba(0, 0, 255, 0.4);
+  --card-bg-green: rgba(60, 179, 113, 0.4);
+  --card-bg-blue: rgba(0, 0, 255, 0.4);
   --card-bg-yellow: rgba(255, 165, 0, 0.4);
-  --card-bg-cyan:rgba(0, 255, 255, 0.4);
+  --card-bg-cyan: rgba(0, 255, 255, 0.4);
+
+  /*Color space palette:*/
+  --color-main: #0d6efd;
+  --color-second: #a3a7dd;
+  --color-third: #edeeff;
+  --color-fourth: #c0a975;
 }
 body {
   background-color: var(--bg-color);
