@@ -12,4 +12,7 @@
   h1 {
     margin: unset;
   }
+  img {
+    filter: drop-shadow(1px 1px 1px var(--bg-overlay));
+  }
 }
