@@ -24,3 +24,12 @@ app-login {
   justify-content: center;
   align-items: center;
 }
+
+.input-border-error {
+  border: red 1px solid;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}

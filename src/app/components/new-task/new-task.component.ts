@@ -19,16 +19,31 @@ export class NewTaskComponent {
   isoDateString: string = this.currentDate.toISOString();
   formDue_date: string = '';
   submitted = false;
+  formGroupTitle = document.getElementById('formGroupTitle');
 
-  constructor(private overlayService: OverlayService) {
-  }
-  sendForm() {
-    const formGroupTitle = document.getElementById('formGroupTitle');
+  constructor(private overlayService: OverlayService) {}
+  submitForm() {
     this.submitted = true;
 
     if (this.checkFormFields()) {
-    // Erstelle ein Objekt, um nur den Titel und die Beschreibung zu speichern
-    const formData: Partial<TaskInterface> = {
+      if (this.formGroupTitle) {
+        this.formGroupTitle.style.border = '';
+      }
+      this.sendForm();
+    } else {
+      if (this.formGroupTitle) {
+        this.formGroupTitle.style.border = '1px solid red';
+        console.error('Send Form: Something went wrong! ');
+      }
+    }
+  }
+
+  checkFormFields(): boolean {
+    return this.formTitle !== '';
+  }
+
+  createFormObject() {
+    return {
       title: this.formTitle,
       description: this.formDescription,
       created_at: this.isoDateString,
@@ -37,20 +52,11 @@ export class NewTaskComponent {
       color: this.formColor,
       board_column: this.formColumn,
     };
-      // Logge das Objekt mit den Titel- und Beschreibungsdaten
-      console.log('Form Data: ', formData);
-
-    } else {
-      if(formGroupTitle){
-        // Der Titel ist leer, füge einen roten Rahmen hinzu
-        formGroupTitle.style.border = '1px solid red';
-        console.log('Wrong Form Title!');
-      }
-    }
   }
 
-  checkFormFields(): boolean {
-    return this.formTitle !== '';
+  sendForm() {
+    const formData: Partial<TaskInterface> = this.createFormObject();
+    console.log('Log: Send Formdata: ', formData);
   }
 
   onSelectedColumnChange(selectedColumn: string) {

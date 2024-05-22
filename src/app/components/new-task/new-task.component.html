@@ -1,6 +1,6 @@
 <div (click)="toggleOverlay()" class="overlay">
   <div class="card">
-    <form (ngSubmit)="sendForm()">
+    <form (ngSubmit)="submitForm()">
       <div (click)="$event.stopPropagation()" class="card-body">
         <div class="card-body__header">
           <h2>New Task</h2>
@@ -12,6 +12,9 @@
           <input
             type="text"
             class="form-control"
+            [ngClass]="{
+              'input-border-error': formTitleField.invalid && submitted
+            }"
             id="formGroupTitle"
             [(ngModel)]="formTitle"
             name="formTitle"
@@ -20,7 +23,10 @@
             required
           />
           <div
-            *ngIf="formTitleField.invalid && (formTitleField.dirty || formTitleField.touched || submitted)"
+            *ngIf="
+              formTitleField.invalid &&
+              (formTitleField.dirty || formTitleField.touched || submitted)
+            "
             class="error-message"
           >
             Das Feld darf nicht leer sein.
