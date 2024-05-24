@@ -83,10 +83,10 @@ export class NewTaskComponent {
 
   sendForm() {
     const formData: Partial<TaskInterface> = this.createFormObject();
+    console.log('Log: Send Formdata: ', formData);
     this.httpPOST.postNewTask(formData)
-    .subscribe(response => {
+.subscribe(response => {
       console.log('Antwort vom Backend:', response);
-      console.log('Log: Send Formdata: ', formData);
       // Hier kannst du weitere Logik hinzufügen, z.B. eine Erfolgsmeldung anzeigen
     }, error => {
       console.error('Fehler beim Speichern der Aufgabe:', error);

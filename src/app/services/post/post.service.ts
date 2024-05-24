@@ -16,7 +16,7 @@ export class PostService {
   postNewTask(aufgabenDaten: any) {
     const url = environment.baseUrl + '/tasks/';
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`,
+      'Authorization': `Token ${this.token}`,
       'Content-Type': 'application/json'
     });
 
