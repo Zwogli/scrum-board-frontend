@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class NewTaskDueDateComponent {
   @Output() dueDateChange = new EventEmitter<string>();
+  @Input() parentSubmitted = false;
+  isInvalid = false;
   dateForm: FormGroup;
   minDate: string = new Date().toISOString().split('T')[0]; // Das aktuelle Datum im ISO-Format ohne Zeit;
 
@@ -29,6 +31,11 @@ export class NewTaskDueDateComponent {
   }
 
   onDueDateChange(event: any) {
+    const selectedDate = event.target.value;
+    const comparableSelectedDate = selectedDate.replace(/-/g, '');
+    const comparableMinDate = this.minDate.replace(/-/g, '');
+
+    this.isInvalid = comparableSelectedDate < comparableMinDate;
     this.dueDateChange.emit(event.target.value);
   }
 }

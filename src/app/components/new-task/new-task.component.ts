@@ -28,7 +28,7 @@ export class NewTaskComponent {
     return new Date().toISOString().split('T')[0];
   }
 
-  submitForm() {
+  submitForm(form: NgForm) {
     this.submitted = true;
 
     if (this.checkFormFields()) {

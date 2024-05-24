@@ -6,5 +6,10 @@
     [value]="minDate"
     [min]="minDate"
     (change)="onDueDateChange($event)"
+    [ngClass]="{'input-border-error': isInvalid && parentSubmitted}"
   />
+  <div *ngIf="isInvalid && parentSubmitted" class="error-message">
+    Das Datum muss in der Zukunft liegen.
+  </div>
 </div>
+
