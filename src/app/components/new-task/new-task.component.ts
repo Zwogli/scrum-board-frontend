@@ -41,9 +41,28 @@ export class NewTaskComponent {
   }
 
   checkFormFields(): boolean {
-    const comparableDue_Date = this.formDue_date.replace(/-/g, '');
+    return this.isCheckedTitel() && this.isCheckedDueDate();
+  }
+
+  isCheckedTitel() {
+    return this.formTitle !== '';
+  }
+
+  isCheckedDueDate() {
+    let comparableDue_Date = this.loadComparableDue_Date();
     const comparableCurrentDate = this.currentDateFormatted.replace(/-/g, '');
-    return this.formTitle !== '' && comparableDue_Date > comparableCurrentDate;
+    return comparableDue_Date >= comparableCurrentDate;
+  }
+
+  loadComparableDue_Date() {
+    let comparableDue_Date = '';
+    if (this.formDue_date) {
+      return (comparableDue_Date = this.formDue_date.replace(/-/g, ''));
+    } else {
+      // Wenn formDue_date leer ist, setze es auf das aktuelle Datum
+      this.formDue_date = this.dateFormatter();
+      return (comparableDue_Date = this.currentDateFormatted.replace(/-/g, ''));
+    }
   }
 
   createFormObject() {
