@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { TaskInterface } from '../../models.ts/task.model';
 import { OverlayService } from '../../services/overlay/overlay.service';
 import { NgForm } from '@angular/forms';
+import { PostService } from '../../services/post/post.service';
 
 @Component({
   selector: 'app-new-task',
@@ -22,7 +23,10 @@ export class NewTaskComponent {
   submitted = false;
   formGroupTitle = document.getElementById('formGroupTitle');
 
-  constructor(private overlayService: OverlayService) {}
+  constructor(
+    private overlayService: OverlayService,
+    private httpPOST: PostService,
+  ) {}
 
   dateFormatter() {
     return new Date().toISOString().split('T')[0];
@@ -79,7 +83,15 @@ export class NewTaskComponent {
 
   sendForm() {
     const formData: Partial<TaskInterface> = this.createFormObject();
-    console.log('Log: Send Formdata: ', formData);
+    this.httpPOST.postNewTask(formData)
+    .subscribe(response => {
+      console.log('Antwort vom Backend:', response);
+      console.log('Log: Send Formdata: ', formData);
+      // Hier kannst du weitere Logik hinzufügen, z.B. eine Erfolgsmeldung anzeigen
+    }, error => {
+      console.error('Fehler beim Speichern der Aufgabe:', error);
+      // Hier kannst du Fehlerbehandlung hinzufügen, z.B. eine Fehlermeldung anzeigen
+    });
   }
 
   errorManager() {
