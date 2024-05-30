@@ -63,7 +63,7 @@ export class NewTaskComponent {
     if (this.formDue_date) {
       return (comparableDue_Date = this.formDue_date.replace(/-/g, ''));
     } else {
-      // Wenn formDue_date leer ist, setze es auf das aktuelle Datum
+      // If formDue_date is empty, set it to the current date
       this.formDue_date = this.dateFormatter();
       return (comparableDue_Date = this.currentDateFormatted.replace(/-/g, ''));
     }
@@ -86,11 +86,11 @@ export class NewTaskComponent {
     console.log('Log: Send Formdata: ', formData);
     this.httpPOST.postNewTask(formData)
 .subscribe(response => {
-      console.log('Antwort vom Backend:', response);
-      // Hier kannst du weitere Logik hinzufügen, z.B. eine Erfolgsmeldung anzeigen
+      console.log('response from backend:', response);
+      // Here you can add further logic, e.g. display a success message
     }, error => {
-      console.error('Fehler beim Speichern der Aufgabe:', error);
-      // Hier kannst du Fehlerbehandlung hinzufügen, z.B. eine Fehlermeldung anzeigen
+      console.error('Error saving task:', error);
+      // Here you can add error handling, e.g. display an error message
     });
   }
 
