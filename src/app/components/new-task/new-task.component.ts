@@ -15,7 +15,7 @@ export class NewTaskComponent {
   formDescription: string = '';
   formColumn: string = 'board-column-todo';
   formColor: string = 'red';
-  formPriority: string = 'Low';
+  formPriority: string = 'low';
   currentDate: Date = new Date();
   currentDateFormatted: string = this.dateFormatter();
   isoDateString: string = this.currentDate.toISOString();
@@ -25,7 +25,7 @@ export class NewTaskComponent {
 
   constructor(
     private overlayService: OverlayService,
-    private httpPOST: PostService,
+    private httpPOST: PostService
   ) {}
 
   dateFormatter() {
@@ -84,14 +84,16 @@ export class NewTaskComponent {
   sendForm() {
     const formData: Partial<TaskInterface> = this.createFormObject();
     console.log('Log: Send Formdata: ', formData);
-    this.httpPOST.postNewTask(formData)
-.subscribe(response => {
-      console.log('response from backend:', response);
-      // Here you can add further logic, e.g. display a success message
-    }, error => {
-      console.error('Error saving task:', error);
-      // Here you can add error handling, e.g. display an error message
-    });
+    this.httpPOST.postNewTask(formData).subscribe(
+      (response) => {
+        console.log('response from backend:', response);
+        // Here you can add further logic, e.g. display a success message
+      },
+      (error) => {
+        console.error('Error saving task:', error);
+        // Here you can add error handling, e.g. display an error message
+      }
+    );
   }
 
   errorManager() {
