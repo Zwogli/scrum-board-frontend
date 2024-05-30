@@ -73,7 +73,7 @@ export class NewTaskComponent {
     return {
       title: this.formTitle,
       description: this.formDescription,
-      created_at: this.isoDateString,
+      created_at: this.currentDateFormatted,
       due_date: this.formDue_date,
       priority: this.formPriority,
       color: this.formColor,
