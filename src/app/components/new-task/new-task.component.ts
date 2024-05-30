@@ -84,16 +84,16 @@ export class NewTaskComponent {
   sendForm() {
     const formData: Partial<TaskInterface> = this.createFormObject();
     console.log('Log: Send Formdata: ', formData);
-    this.httpPOST.postNewTask(formData).subscribe(
-      (response) => {
+    this.httpPOST.postNewTask(formData).subscribe({
+      next: (response) => {
         console.log('response from backend:', response);
-        // Here you can add further logic, e.g. display a success message
+        // Hier kannst du weitere Logik hinzufügen, z.B. eine Erfolgsmeldung anzeigen
       },
-      (error) => {
+      error: (error) => {
         console.error('Error saving task:', error);
-        // Here you can add error handling, e.g. display an error message
+        // Hier kannst du Fehlerbehandlung hinzufügen, z.B. eine Fehlermeldung anzeigen
       }
-    );
+    });
   }
 
   errorManager() {
