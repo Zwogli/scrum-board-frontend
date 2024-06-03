@@ -3,6 +3,7 @@ import { TaskInterface } from '../../models.ts/task.model';
 import { OverlayService } from '../../services/overlay/overlay.service';
 import { NgForm } from '@angular/forms';
 import { PostService } from '../../services/post/post.service';
+import { WebsocketService } from '../../services/websocket/websocket.service';
 
 @Component({
   selector: 'app-new-task',
@@ -25,8 +26,22 @@ export class NewTaskComponent {
 
   constructor(
     private overlayService: OverlayService,
-    private httpPOST: PostService
+    private httpPOST: PostService,
+    private websocketService: WebsocketService
   ) {}
+
+  ngOnInit(): void {
+    this.websocketService.connect().subscribe(
+      (message) => {
+        // Handle incoming messages from the WebSocket
+        console.log('Received message:', message);
+        // Update your view accordingly
+      },
+      (error) => {
+        console.error('WebSocket error:', error);
+      }
+    );
+  }
 
   dateFormatter() {
     return new Date().toISOString().split('T')[0];
@@ -88,11 +103,12 @@ export class NewTaskComponent {
       next: (response) => {
         console.log('response from backend:', response);
         // Hier kannst du weitere Logik hinzufügen, z.B. eine Erfolgsmeldung anzeigen
+        this.websocketService.sendMessage('Form data saved');
       },
       error: (error) => {
         console.error('Error saving task:', error);
         // Hier kannst du Fehlerbehandlung hinzufügen, z.B. eine Fehlermeldung anzeigen
-      }
+      },
     });
   }
 
