@@ -1,27 +1,30 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class WebsocketService {
-  private socket: WebSocket;
-  private readonly SERVER_URL = environment.wsBaseUrl;
+  private socket: WebSocket=new WebSocket(environment.wsBaseUrl);
 
   constructor() {
-    this.socket = new WebSocket(this.SERVER_URL);
+    debugger
+    this.initWebSocket();
   }
 
-  public connect(): Observable<any> {
-    return new Observable((observer) => {
-      this.socket.onmessage = (event) => observer.next(event.data);
-      this.socket.onerror = (error) => observer.error(error);
-      this.socket.onclose = () => observer.complete();
-    });
+  private initWebSocket() {
+    this.socket.onopen = () => {
+      console.log('WebSocket connection established.');
+    };
+
+    this.socket.onclose = () => {
+      console.log('WebSocket connection closed.');
+    };
+
+    this.socket.onerror = (error) => {
+      console.error('WebSocket error:', error);
+    };
   }
 
-  public sendMessage(message: string): void {
-    this.socket.send(message);
-  }
+  // Weitere Methoden zum Senden und Empfangen von Nachrichten...
 }

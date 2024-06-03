@@ -30,19 +30,6 @@ export class NewTaskComponent {
     private websocketService: WebsocketService
   ) {}
 
-  ngOnInit(): void {
-    this.websocketService.connect().subscribe(
-      (message) => {
-        // Handle incoming messages from the WebSocket
-        console.log('Received message:', message);
-        // Update your view accordingly
-      },
-      (error) => {
-        console.error('WebSocket error:', error);
-      }
-    );
-  }
-
   dateFormatter() {
     return new Date().toISOString().split('T')[0];
   }
@@ -98,12 +85,11 @@ export class NewTaskComponent {
 
   sendForm() {
     const formData: Partial<TaskInterface> = this.createFormObject();
-    console.log('Log: Send Formdata: ', formData);
     this.httpPOST.postNewTask(formData).subscribe({
       next: (response) => {
         console.log('response from backend:', response);
+        this.toggleOverlay();
         // Hier kannst du weitere Logik hinzufügen, z.B. eine Erfolgsmeldung anzeigen
-        this.websocketService.sendMessage('Form data saved');
       },
       error: (error) => {
         console.error('Error saving task:', error);
