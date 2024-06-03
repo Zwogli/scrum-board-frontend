@@ -8,7 +8,6 @@ export class WebsocketService {
   private socket: WebSocket=new WebSocket(environment.wsBaseUrl);
 
   constructor() {
-    debugger
     this.initWebSocket();
   }
 
