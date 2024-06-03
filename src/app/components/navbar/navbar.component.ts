@@ -15,14 +15,27 @@ export class NavbarComponent {
     const token = sessionStorage.getItem('token');
 
     if (token) {
-      const headers = new HttpHeaders().set('Authorization', 'Token ' + token);
-      sessionStorage.removeItem('token');
+      const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
+      // sessionStorage.removeItem('token');
       this.http
-        .post(environment.baseUrl + '/logout/', {}, { headers })
-        .subscribe(() => {
-          this.router.navigateByUrl('/login');
-          // add logout message
+        .post(`${environment.baseUrl}/logout/`, {}, { headers })
+        .subscribe({
+          next: (response) => {
+            console.log(response);
+            sessionStorage.removeItem('token');
+            this.router.navigateByUrl('/login');
+            // Optional: add logout message
+          },
+          error: (error) => {
+            console.error(error);
+            // Handle error here
+          },
+          complete: () => {
+            console.log('Logout request completed.');
+          },
         });
+    } else {
+      console.log('No token found in sessionStorage');
     }
   }
 }
