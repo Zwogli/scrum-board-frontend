@@ -3,7 +3,6 @@ import { TaskInterface } from '../../models.ts/task.model';
 import { OverlayService } from '../../services/overlay/overlay.service';
 import { NgForm } from '@angular/forms';
 import { PostService } from '../../services/post/post.service';
-import { WebsocketService } from '../../services/websocket/websocket.service';
 
 @Component({
   selector: 'app-new-task',
@@ -26,8 +25,7 @@ export class NewTaskComponent {
 
   constructor(
     private overlayService: OverlayService,
-    private httpPOST: PostService,
-    private websocketService: WebsocketService
+    private httpPOST: PostService
   ) {}
 
   dateFormatter() {
