@@ -25,7 +25,7 @@ export class NewTaskComponent {
 
   constructor(
     private overlayService: OverlayService,
-    private httpPOST: PostService
+    private httpPOST: PostService,
   ) {}
 
   dateFormatter() {
@@ -39,7 +39,7 @@ export class NewTaskComponent {
       this.removeErrorManager();
       this.sendForm();
     } else {
-      console.error('Send Form: Something went wrong! ');
+      console.error('new-task.component.ts: Send Form: Something went wrong! ');
       this.errorManager();
     }
   }

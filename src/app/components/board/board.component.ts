@@ -4,13 +4,14 @@ import { environment } from '../../../environments/environment';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { OverlayService } from '../../services/overlay/overlay.service';
-import { WebsocketService } from '../../services/websocket/websocket.service';
+import { WebSocketService } from '../../services/websocket/websocket.service';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss',
 })
+
 export class BoardComponent {
   requestOptions: any = {
     method: 'GET',
@@ -27,39 +28,23 @@ export class BoardComponent {
   constructor(
     private http: HttpClient,
     private overlayService: OverlayService,
-    private websocketService: WebsocketService
+    private websocketService: WebSocketService
   ) {}
 
   async ngOnInit() {
-    this.overlayService.overlayState$.subscribe(state => {
+    this.overlayService.overlayState$.subscribe((state) => {
       this.overlayState = state;
-    })
+    });
 
     try {
       this.allTasks = await this.loadAllTasks();
       this.filterColumns(this.allTasks);
       // console.log('Task Object: ', this.allTasks);
+      this.setupWebSocket();
     } catch (e) {
       this.error = 'Fehler beim Laden!';
     }
-    
-     // Abonniere die Nachrichten des Websockets
-     this.websocketService.getMessageSubject().subscribe(async (message) => {
-      // Hier kannst du auf eingehende WebSocket-Nachrichten reagieren und entsprechende Aktualisierungen vornehmen
-      console.log('Received message from WebSocket:', message);
-
-      // Führe die Aktualisierungen nur durch, wenn die Nachricht das gewünschte Update auslöst
-      if (message === 'Form data saved') {
-        try {
-          this.allTasks = await this.loadAllTasks();
-          this.filterColumns(this.allTasks);
-          // console.log('Task Object: ', this.allTasks);
-        } catch (e) {
-          this.error = 'Fehler beim Laden!';
-        }
-      }
-     });
-  }
+  };
 
   loadAllTasks() {
     /**
@@ -95,5 +80,15 @@ export class BoardComponent {
 
   toggleOverlay() {
     this.overlayService.toggleOverlay();
+  }
+
+  setupWebSocket() {
+    this.websocketService.getMessages().subscribe((message) => {
+      console.log('Received message:', message);
+      if (message && message.task) {
+        this.allTasks.push(message.task);
+        this.filterColumns(this.allTasks);
+      }
+    });
   }
 }
