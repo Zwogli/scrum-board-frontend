@@ -3,8 +3,7 @@ import { TaskInterface } from '../../models.ts/task.model';
 import { environment } from '../../../environments/environment';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { OverlayNewTaskService } from '../../services/overlay-new-task/overlay-new-task.service';
-import { OverlayDeleteTaskService } from '../../services/overlay-delete-task/overlay-delete-task.service';
+import { OverlayService } from '../../services/overlay/overlay.service';
 import { WebSocketService } from '../../services/websocket/websocket.service';
 
 @Component({
@@ -28,17 +27,16 @@ export class BoardComponent {
 
   constructor(
     private http: HttpClient,
-    private overlayNewTaskService: OverlayNewTaskService,
-    private overlayDeleteTaskService: OverlayDeleteTaskService,
+    private overlayService: OverlayService,
     private websocketService: WebSocketService
   ) {}
 
   async ngOnInit() {
-    this.overlayNewTaskService.overlayNewTaskState$.subscribe((state) => {
+    this.overlayService.overlayNewTaskState$.subscribe((state) => {
       this.overlayNewTaskState = state;
     });
 
-    this.overlayDeleteTaskService.overlayDeleteTaskState$.subscribe((state) => {
+    this.overlayService.overlayDeleteTaskState$.subscribe((state) => {
       this.overlayDeleteTaskState = state;
     });
 
@@ -85,11 +83,11 @@ export class BoardComponent {
   }
 
   toggleNewTaskOverlay() {
-    this.overlayNewTaskService.toggleOverlay();
+    this.overlayService.toggleOverlayNewTask();
   }
 
-  toggleDeleteTaskOverlay(){
-    this.overlayDeleteTaskService.toggleOverlay();
+  toggleDeleteTaskOverlay() {
+    this.overlayService.toggleOverlayDeleteTask();
   }
 
   setupWebSocket() {

@@ -4,13 +4,23 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class OverlayDeleteTaskService {
+export class OverlayService {
+  private overlayNewTaskState = false;
+  overlayNewTaskState$ = new Subject<boolean>();
   private overlayDeleteTaskState = false;
   overlayDeleteTaskState$ = new Subject<boolean>();
 
-  constructor() {}
+  toggleOverlayNewTask() {
+    if (this.overlayNewTaskState == false) {
+      this.overlayNewTaskState = true;
+      this.overlayNewTaskState$.next(this.overlayNewTaskState);
+    } else {
+      this.overlayNewTaskState = false;
+      this.overlayNewTaskState$.next(this.overlayNewTaskState);
+    }
+  }
 
-  toggleOverlay() {
+  toggleOverlayDeleteTask() {
     if (this.overlayDeleteTaskState == false) {
       this.overlayDeleteTaskState = true;
       this.overlayDeleteTaskState$.next(this.overlayDeleteTaskState);

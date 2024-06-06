@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OverlayDeleteTaskService } from '../../services/overlay-delete-task/overlay-delete-task.service';
+import { OverlayService } from '../../services/overlay/overlay.service';
 
 @Component({
   selector: 'app-delete-task',
@@ -8,9 +8,9 @@ import { OverlayDeleteTaskService } from '../../services/overlay-delete-task/ove
 })
 export class DeleteTaskComponent {
   overlayDeleteTaskState: boolean = false;
-  constructor(private overlayDeleteTaskService: OverlayDeleteTaskService) {}
+  constructor(private overlayService: OverlayService) {}
 
   toggleDeleteOverlay() {
-    this.overlayDeleteTaskService.toggleOverlay();
+    this.overlayService.toggleOverlayDeleteTask();
   }
 }
