@@ -1,11 +1,13 @@
 .board {
   width: 100dvw;
-  max-width: calc(100dvw - 1rem);
+  max-width: calc(1920px - 1rem);
   height: calc(100dvh - 65px - 1rem);
   background-color: var(--bg-color);
   display: flex;
+  justify-content: center;
   gap: 1rem;
   padding: 0 1rem;
+
   .column {
     width: 25%;
     border: dashed var(--color-fourth);
