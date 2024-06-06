@@ -33,6 +33,20 @@
 li {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   .card-title {
-    padding: 1rem;
+    padding: 0.5rem 1rem 0 1rem;
   }
+  .card-body {
+    padding: 0 1rem 1rem 1rem;
+  }
+}
+
+.card-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-text--info {
+  font-size: 0.8rem;
+  min-width: 30%;
 }
