@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { TaskInterface } from '../../models.ts/task.model';
-import { OverlayService } from '../../services/overlay/overlay.service';
+import { OverlayNewTaskService } from '../../services/overlay-new-task/overlay-new-task.service';
 import { NgForm } from '@angular/forms';
 import { PostService } from '../../services/post/post.service';
 
@@ -24,8 +24,8 @@ export class NewTaskComponent {
   formGroupTitle = document.getElementById('formGroupTitle');
 
   constructor(
-    private overlayService: OverlayService,
-    private httpPOST: PostService,
+    private overlayNewTaskService: OverlayNewTaskService,
+    private httpPOST: PostService
   ) {}
 
   dateFormatter() {
@@ -125,6 +125,6 @@ export class NewTaskComponent {
   }
 
   toggleOverlay() {
-    this.overlayService.toggleOverlay();
+    this.overlayNewTaskService.toggleOverlay();
   }
 }

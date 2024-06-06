@@ -3,7 +3,7 @@ import { TaskInterface } from '../../models.ts/task.model';
 import { environment } from '../../../environments/environment';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { OverlayService } from '../../services/overlay/overlay.service';
+import { OverlayNewTaskService } from '../../services/overlay-new-task/overlay-new-task.service';
 import { WebSocketService } from '../../services/websocket/websocket.service';
 
 @Component({
@@ -11,7 +11,6 @@ import { WebSocketService } from '../../services/websocket/websocket.service';
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss',
 })
-
 export class BoardComponent {
   requestOptions: any = {
     method: 'GET',
@@ -27,12 +26,12 @@ export class BoardComponent {
 
   constructor(
     private http: HttpClient,
-    private overlayService: OverlayService,
+    private overlayNewTaskService: OverlayNewTaskService,
     private websocketService: WebSocketService
   ) {}
 
   async ngOnInit() {
-    this.overlayService.overlayState$.subscribe((state) => {
+    this.overlayNewTaskService.overlayNewTaskState$.subscribe((state) => {
       this.overlayState = state;
     });
 
@@ -44,7 +43,7 @@ export class BoardComponent {
     } catch (e) {
       this.error = 'Fehler beim Laden!';
     }
-  };
+  }
 
   loadAllTasks() {
     /**
@@ -79,7 +78,7 @@ export class BoardComponent {
   }
 
   toggleOverlay() {
-    this.overlayService.toggleOverlay();
+    this.overlayNewTaskService.toggleOverlay();
   }
 
   setupWebSocket() {
