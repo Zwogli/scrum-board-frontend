@@ -35,7 +35,10 @@
               {{ task.due_date }}
             </p>
           </div>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="card-row">
+            <a href="#" class="btn btn-primary">Bearbeiten</a>
+            <a href="#" class="btn btn-danger">Löschen</a>
+          </div>
         </div>
       </li>
     </ul>
@@ -51,31 +54,34 @@
         [style.backgroundColor]="getCardBackgroundColor(task.color)"
         class="card card-color"
       >
-      <h5 class="card-title">{{ task.title }}</h5>
-      <p class="card-text">{{ task.description }}</p>
-      <div class="card-body">
-        <div class="card-row">
-          <p class="card-text--info">
-            Erstell von:<br />
-            {{ task.author_username }}
-          </p>
-          <p class="card-text--info">
-            Priorität:<br />
-            {{ task.priority }}
-          </p>
+        <h5 class="card-title">{{ task.title }}</h5>
+        <p class="card-text">{{ task.description }}</p>
+        <div class="card-body">
+          <div class="card-row">
+            <p class="card-text--info">
+              Erstell von:<br />
+              {{ task.author_username }}
+            </p>
+            <p class="card-text--info">
+              Priorität:<br />
+              {{ task.priority }}
+            </p>
+          </div>
+          <div class="card-row">
+            <p class="card-text--info">
+              Erstellt am:<br />
+              {{ task.created_at }}
+            </p>
+            <p class="card-text--info">
+              Fällig am:<br />
+              {{ task.due_date }}
+            </p>
+          </div>
+          <div class="card-row">
+            <a href="#" class="btn btn-primary">Bearbeiten</a>
+            <a href="#" class="btn btn-danger">Löschen</a>
+          </div>
         </div>
-        <div class="card-row">
-          <p class="card-text--info">
-            Erstellt am:<br />
-            {{ task.created_at }}
-          </p>
-          <p class="card-text--info">
-            Fällig am:<br />
-            {{ task.due_date }}
-          </p>
-        </div>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
       </li>
     </ul>
   </div>
@@ -90,31 +96,34 @@
         [style.backgroundColor]="task.color"
         class="card"
       >
-      <h5 class="card-title">{{ task.title }}</h5>
-      <p class="card-text">{{ task.description }}</p>
-      <div class="card-body">
-        <div class="card-row">
-          <p class="card-text--info">
-            Erstell von:<br />
-            {{ task.author_username }}
-          </p>
-          <p class="card-text--info">
-            Priorität:<br />
-            {{ task.priority }}
-          </p>
+        <h5 class="card-title">{{ task.title }}</h5>
+        <p class="card-text">{{ task.description }}</p>
+        <div class="card-body">
+          <div class="card-row">
+            <p class="card-text--info">
+              Erstell von:<br />
+              {{ task.author_username }}
+            </p>
+            <p class="card-text--info">
+              Priorität:<br />
+              {{ task.priority }}
+            </p>
+          </div>
+          <div class="card-row">
+            <p class="card-text--info">
+              Erstellt am:<br />
+              {{ task.created_at }}
+            </p>
+            <p class="card-text--info">
+              Fällig am:<br />
+              {{ task.due_date }}
+            </p>
+          </div>
+          <div class="card-row">
+            <a href="#" class="btn btn-primary">Bearbeiten</a>
+            <a href="#" class="btn btn-danger">Löschen</a>
+          </div>
         </div>
-        <div class="card-row">
-          <p class="card-text--info">
-            Erstellt am:<br />
-            {{ task.created_at }}
-          </p>
-          <p class="card-text--info">
-            Fällig am:<br />
-            {{ task.due_date }}
-          </p>
-        </div>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
       </li>
     </ul>
   </div>
@@ -129,31 +138,34 @@
         [style.backgroundColor]="task.color"
         class="card"
       >
-      <h5 class="card-title">{{ task.title }}</h5>
-      <p class="card-text">{{ task.description }}</p>
-      <div class="card-body">
-        <div class="card-row">
-          <p class="card-text--info">
-            Erstell von:<br />
-            {{ task.author_username }}
-          </p>
-          <p class="card-text--info">
-            Priorität:<br />
-            {{ task.priority }}
-          </p>
+        <h5 class="card-title">{{ task.title }}</h5>
+        <p class="card-text">{{ task.description }}</p>
+        <div class="card-body">
+          <div class="card-row">
+            <p class="card-text--info">
+              Erstell von:<br />
+              {{ task.author_username }}
+            </p>
+            <p class="card-text--info">
+              Priorität:<br />
+              {{ task.priority }}
+            </p>
+          </div>
+          <div class="card-row">
+            <p class="card-text--info">
+              Erstellt am:<br />
+              {{ task.created_at }}
+            </p>
+            <p class="card-text--info">
+              Fällig am:<br />
+              {{ task.due_date }}
+            </p>
+          </div>
+          <div class="card-row">
+            <a href="#" class="btn btn-primary">Bearbeiten</a>
+            <a href="#" class="btn btn-danger">Löschen</a>
+          </div>
         </div>
-        <div class="card-row">
-          <p class="card-text--info">
-            Erstellt am:<br />
-            {{ task.created_at }}
-          </p>
-          <p class="card-text--info">
-            Fällig am:<br />
-            {{ task.due_date }}
-          </p>
-        </div>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
       </li>
     </ul>
   </div>
