@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   baseUrl: 'http://127.0.0.1:8000',
-  wsBaseUrl: 'ws://127.0.0.1:8000/ws/task/', // WebSocket URL
+  wsBaseUrl: 'ws://127.0.0.1:8001/ws/task/', // WebSocket URL
 };
 
 /*
