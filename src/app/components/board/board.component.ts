@@ -22,7 +22,7 @@ export class BoardComponent {
   feedbackTasks: TaskInterface[] = [];
   doneTasks: TaskInterface[] = [];
   error: string = '';
-  overlayState: boolean = false;
+  overlayNewTaskState: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -32,7 +32,7 @@ export class BoardComponent {
 
   async ngOnInit() {
     this.overlayNewTaskService.overlayNewTaskState$.subscribe((state) => {
-      this.overlayState = state;
+      this.overlayNewTaskState = state;
     });
 
     try {
