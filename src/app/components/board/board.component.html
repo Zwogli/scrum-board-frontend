@@ -4,7 +4,9 @@
   <div class="column">
     <div class="headline">
       <h2>Todos</h2>
-      <button (click)="toggleNewTaskOverlay()" class="btn btn-primary">+</button>
+      <button (click)="toggleNewTaskOverlay()" class="btn btn-primary">
+        +
+      </button>
     </div>
     <ul id="board-column-todo">
       <li
@@ -36,8 +38,18 @@
             </p>
           </div>
           <div class="card-row">
-            <a href="#" class="btn btn-primary btn-card">Bearbeiten</a>
-            <button (click)="toggleDeleteTaskOverlay()" class="btn btn-danger btn-card">Löschen</button>
+            <button
+              (click)="toggleEditTaskOverlay()"
+              class="btn btn-primary btn-card"
+            >
+              Bearbeiten
+            </button>
+            <button
+              (click)="toggleDeleteTaskOverlay()"
+              class="btn btn-danger btn-card"
+            >
+              Löschen
+            </button>
           </div>
         </div>
       </li>
@@ -46,7 +58,9 @@
   <div class="column">
     <div class="headline">
       <h2>In progress</h2>
-      <button (click)="toggleNewTaskOverlay()" class="btn btn-primary">+</button>
+      <button (click)="toggleNewTaskOverlay()" class="btn btn-primary">
+        +
+      </button>
     </div>
     <ul id="board-column-progress">
       <li
@@ -78,8 +92,18 @@
             </p>
           </div>
           <div class="card-row">
-            <a href="#" class="btn btn-primary btn-card">Bearbeiten</a>
-            <button (click)="toggleDeleteTaskOverlay()" class="btn btn-danger btn-card">Löschen</button>
+            <button
+              (click)="toggleEditTaskOverlay()"
+              class="btn btn-primary btn-card"
+            >
+              Bearbeiten
+            </button>
+            <button
+              (click)="toggleDeleteTaskOverlay()"
+              class="btn btn-danger btn-card"
+            >
+              Löschen
+            </button>
           </div>
         </div>
       </li>
@@ -88,7 +112,9 @@
   <div class="column">
     <div class="headline">
       <h2>Feedback</h2>
-      <button (click)="toggleNewTaskOverlay()" class="btn btn-primary">+</button>
+      <button (click)="toggleNewTaskOverlay()" class="btn btn-primary">
+        +
+      </button>
     </div>
     <ul id="board-column-feedback">
       <li
@@ -120,8 +146,18 @@
             </p>
           </div>
           <div class="card-row">
-            <a href="#" class="btn btn-primary btn-card">Bearbeiten</a>
-            <button (click)="toggleDeleteTaskOverlay()" class="btn btn-danger btn-card">Löschen</button>
+            <button
+              (click)="toggleEditTaskOverlay()"
+              class="btn btn-primary btn-card"
+            >
+              Bearbeiten
+            </button>
+            <button
+              (click)="toggleDeleteTaskOverlay()"
+              class="btn btn-danger btn-card"
+            >
+              Löschen
+            </button>
           </div>
         </div>
       </li>
@@ -130,7 +166,9 @@
   <div class="column">
     <div class="headline">
       <h2>Done</h2>
-      <button (click)="toggleNewTaskOverlay()" class="btn btn-primary">+</button>
+      <button (click)="toggleNewTaskOverlay()" class="btn btn-primary">
+        +
+      </button>
     </div>
     <ul id="board-column-done">
       <li
@@ -162,8 +200,18 @@
             </p>
           </div>
           <div class="card-row">
-            <a href="#" class="btn btn-primary btn-card">Bearbeiten</a>
-            <button (click)="toggleDeleteTaskOverlay()" class="btn btn-danger btn-card">Löschen</button>
+            <button
+              (click)="toggleEditTaskOverlay()"
+              class="btn btn-primary btn-card"
+            >
+              Bearbeiten
+            </button>
+            <button
+              (click)="toggleDeleteTaskOverlay()"
+              class="btn btn-danger btn-card"
+            >
+              Löschen
+            </button>
           </div>
         </div>
       </li>
@@ -173,3 +221,4 @@
 
 <app-new-task *ngIf="overlayNewTaskState"></app-new-task>
 <app-delete-task *ngIf="overlayDeleteTaskState"></app-delete-task>
+<app-edit-task *ngIf="overlayEditTaskState"></app-edit-task>

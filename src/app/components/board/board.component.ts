@@ -24,6 +24,7 @@ export class BoardComponent {
   error: string = '';
   overlayNewTaskState: boolean = false;
   overlayDeleteTaskState: boolean = false;
+  overlayEditTaskState: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -35,9 +36,11 @@ export class BoardComponent {
     this.overlayService.overlayNewTaskState$.subscribe((state) => {
       this.overlayNewTaskState = state;
     });
-
     this.overlayService.overlayDeleteTaskState$.subscribe((state) => {
       this.overlayDeleteTaskState = state;
+    });
+    this.overlayService.overlayEditTaskState$.subscribe((state) => {
+      this.overlayEditTaskState = state;
     });
 
     try {
@@ -82,12 +85,17 @@ export class BoardComponent {
     return `var(--card-bg-${color})`;
   }
 
+  // Overlay manager
   toggleNewTaskOverlay() {
     this.overlayService.toggleOverlayNewTask();
   }
 
   toggleDeleteTaskOverlay() {
     this.overlayService.toggleOverlayDeleteTask();
+  }
+
+  toggleEditTaskOverlay() {
+    this.overlayService.toggleOverlayEditTask();
   }
 
   setupWebSocket() {

@@ -17,6 +17,7 @@ import { SelectColorComponent } from './components/select-color/select-color.com
 import { SelectColumnComponent } from './components/select-column/select-column.component';
 import { NewTaskDueDateComponent } from './components/new-task-due-date/new-task-due-date.component';
 import { DeleteTaskComponent } from './components/delete-task/delete-task.component';
+import { EditTaskComponent } from './components/edit-task/edit-task.component';
 
 @NgModule({
   // todo add components
@@ -33,6 +34,7 @@ import { DeleteTaskComponent } from './components/delete-task/delete-task.compon
     SelectColumnComponent,
     NewTaskDueDateComponent,
     DeleteTaskComponent,
+    EditTaskComponent,
   ],
   imports: [
     BrowserModule,

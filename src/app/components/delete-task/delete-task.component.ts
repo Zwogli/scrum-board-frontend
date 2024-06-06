@@ -7,7 +7,6 @@ import { OverlayService } from '../../services/overlay/overlay.service';
   styleUrl: './delete-task.component.scss',
 })
 export class DeleteTaskComponent {
-  overlayDeleteTaskState: boolean = false;
   constructor(private overlayService: OverlayService) {}
 
   toggleDeleteOverlay() {
