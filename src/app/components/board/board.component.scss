@@ -32,6 +32,7 @@
 }
 
 li {
+  margin-bottom: 0.5rem;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   .card-title {
     padding: 0.5rem 1rem 0 1rem;
@@ -45,6 +46,9 @@ li {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  :first-child {
+    margin-right: 0.5rem;
+  }
 }
 
 .card-text {
@@ -53,9 +57,13 @@ li {
 
 .card-text--info {
   font-size: 0.8rem;
-  min-width: 30%;
+  min-width: 45%;
 }
 
 .btn-card {
   border: 1px solid var(--bg-overlay);
+  min-width: 45%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
