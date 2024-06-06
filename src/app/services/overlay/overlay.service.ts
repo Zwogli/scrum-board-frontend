@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,8 @@ export class OverlayService {
   overlayNewTaskState$ = new Subject<boolean>();
   private overlayDeleteTaskState = false;
   overlayDeleteTaskState$ = new Subject<boolean>();
+  private currentTaskId = new BehaviorSubject<number | null>(null);
+  currentTaskId$ = this.currentTaskId.asObservable();
   private overlayEditTaskState = false;
   overlayEditTaskState$ = new Subject<boolean>();
 
@@ -40,5 +43,9 @@ export class OverlayService {
       this.overlayEditTaskState = false;
       this.overlayEditTaskState$.next(this.overlayEditTaskState);
     }
+  }
+
+  setCurrentTaskId(taskId: number | null) {
+    this.currentTaskId.next(taskId);
   }
 }

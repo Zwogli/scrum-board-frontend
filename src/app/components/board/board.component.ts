@@ -90,11 +90,12 @@ export class BoardComponent {
     this.overlayService.toggleOverlayNewTask();
   }
 
-  toggleDeleteTaskOverlay() {
+  toggleDeleteTaskOverlay(taskId: number | null) {
+    this.overlayService.setCurrentTaskId(taskId);
     this.overlayService.toggleOverlayDeleteTask();
   }
 
-  toggleEditTaskOverlay() {
+  toggleEditTaskOverlay(taskId: number | null) {
     this.overlayService.toggleOverlayEditTask();
   }
 
