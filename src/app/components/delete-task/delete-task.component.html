@@ -1,1 +1,13 @@
-<div (click)="toggleDeleteOverlay()" class="overlay"></div>
+<div (click)="toggleDeleteOverlay()" class="overlay">
+  <div class="card">
+    <div (click)="$event.stopPropagation()" class="card-body">
+      <div class="card-body__header">
+        <h2>Sicher das Sie diese Aufgabe Löschen wollen?</h2>
+      </div>
+      <div class="card-row">
+        <button class="btn btn-primary">Nein</button>
+        <button class="btn btn-danger">Ja</button>
+      </div>
+    </div>
+  </div>
+</div>
