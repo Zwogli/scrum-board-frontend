@@ -1,10 +1,10 @@
-<div (click)="toggleOverlay()" class="overlay">
+<div (click)="toggleNewTaskOverlay()" class="overlay">
   <div class="card">
     <form #taskForm="ngForm" (ngSubmit)="submitForm(taskForm)">
       <div (click)="$event.stopPropagation()" class="card-body">
         <div class="card-body__header">
           <h2>New Task</h2>
-          <p (click)="toggleOverlay()" class="btn btn-primary">X</p>
+          <p (click)="toggleNewTaskOverlay()" class="btn btn-primary">X</p>
         </div>
 
         <div class="mb-3">

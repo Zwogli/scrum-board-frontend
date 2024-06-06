@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { OverlayNewTaskService } from '../../services/overlay-new-task/overlay-new-task.service';
+import { OverlayDeleteTaskService } from '../../services/overlay-delete-task/overlay-delete-task.service';
 import { WebSocketService } from '../../services/websocket/websocket.service';
 
 @Component({
@@ -23,16 +24,22 @@ export class BoardComponent {
   doneTasks: TaskInterface[] = [];
   error: string = '';
   overlayNewTaskState: boolean = false;
+  overlayDeleteTaskState: boolean = false;
 
   constructor(
     private http: HttpClient,
     private overlayNewTaskService: OverlayNewTaskService,
+    private overlayDeleteTaskService: OverlayDeleteTaskService,
     private websocketService: WebSocketService
   ) {}
 
   async ngOnInit() {
     this.overlayNewTaskService.overlayNewTaskState$.subscribe((state) => {
       this.overlayNewTaskState = state;
+    });
+
+    this.overlayDeleteTaskService.overlayDeleteTaskState$.subscribe((state) => {
+      this.overlayDeleteTaskState = state;
     });
 
     try {
@@ -77,8 +84,12 @@ export class BoardComponent {
     return `var(--card-bg-${color})`;
   }
 
-  toggleOverlay() {
+  toggleNewTaskOverlay() {
     this.overlayNewTaskService.toggleOverlay();
+  }
+
+  toggleDeleteTaskOverlay(){
+    this.overlayDeleteTaskService.toggleOverlay();
   }
 
   setupWebSocket() {

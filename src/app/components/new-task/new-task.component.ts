@@ -86,7 +86,7 @@ export class NewTaskComponent {
     this.httpPOST.postNewTask(formData).subscribe({
       next: (response) => {
         console.log('response from backend:', response);
-        this.toggleOverlay();
+        this.toggleNewTaskOverlay();
         // Hier kannst du weitere Logik hinzufügen, z.B. eine Erfolgsmeldung anzeigen
       },
       error: (error) => {
@@ -124,7 +124,7 @@ export class NewTaskComponent {
     this.formDue_date = newDueDate; // update due-date-attribute
   }
 
-  toggleOverlay() {
+  toggleNewTaskOverlay() {
     this.overlayNewTaskService.toggleOverlay();
   }
 }
