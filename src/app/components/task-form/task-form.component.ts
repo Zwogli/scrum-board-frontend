@@ -24,21 +24,33 @@ export class TaskFormComponent {
   constructor(private overlayService: OverlayService) {}
 
   ngOnInit() {
-    if (!this.task) {
-      const today = new Date();
-      const year = today.getFullYear();
-      const month = (today.getMonth() + 1).toString().padStart(2, '0');
-      const day = today.getDate().toString().padStart(2, '0');
-      this.dueDate = `${year}-${month}-${day}`;
+    if (this.isEmptyTask()) {
+      this.setDueDate();
+    } 
+    else if(this.isEditTask()) {
+      this.formTitle = this.task!.title;
+      this.formDescription = this.task!.description;
+      this.selectedColumn = this.task!.board_column;
+      this.selectedColor = this.task!.color;
+      this.selectedPriority = this.task!.priority;
+      this.dueDate = this.task!.due_date;
     }
-    if (this.isEditMode && this.task) {
-      this.formTitle = this.task.title;
-      this.formDescription = this.task.description;
-      this.selectedColumn = this.task.board_column;
-      this.selectedColor = this.task.color;
-      this.selectedPriority = this.task.priority;
-      this.dueDate = this.task.due_date;
-    }
+  }
+
+  isEmptyTask() {
+    return !this.task;
+  }
+
+  isEditTask(){
+    return (this.isEditMode && this.task)
+  }
+
+  setDueDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    this.dueDate = `${year}-${month}-${day}`;
   }
 
   onSelectedColumnChange(column: string) {
