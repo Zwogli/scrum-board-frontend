@@ -12,6 +12,7 @@ export class NewTaskDueDateComponent {
   isInvalid = false;
   dateForm: FormGroup;
   minDate: string = new Date().toISOString().split('T')[0]; // Das aktuelle Datum im ISO-Format ohne Zeit;
+  dueDate: string = this.minDate;
 
   constructor(private fb: FormBuilder) {
     // Initialisiere das FormGroup im Konstruktor
@@ -28,14 +29,12 @@ export class NewTaskDueDateComponent {
     const year = today.getFullYear();
 
     this.minDate = `${year}-${month}-${day}`;
+    this.dueDate = this.minDate;
+    console.log('dueDate: ', this.dueDate);
   }
 
   onDueDateChange(event: any) {
     const selectedDate = event.target.value;
-    const comparableSelectedDate = selectedDate.replace(/-/g, '');
-    const comparableMinDate = this.minDate.replace(/-/g, '');
-
-    this.isInvalid = comparableSelectedDate < comparableMinDate;
-    this.dueDateChange.emit(event.target.value);
+    this.dueDateChange.emit(selectedDate);
   }
 }

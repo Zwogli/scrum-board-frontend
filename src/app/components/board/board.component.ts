@@ -123,12 +123,15 @@ export class BoardComponent {
       await this.createTask(task);
     }
     this.overlayService.toggleOverlayNewTask();
+    this.isEditMode = false;
   }
 
   async createTask(task: TaskInterface) {
     const url = `${environment.baseUrl}/tasks/`;
     try {
-      const newTask = await lastValueFrom(this.http.post<TaskInterface>(url, task));
+      const newTask = await lastValueFrom(
+        this.http.post<TaskInterface>(url, task)
+      );
       this.allTasks.push(newTask);
       this.filterColumns(this.allTasks);
     } catch (e) {
@@ -139,7 +142,9 @@ export class BoardComponent {
   async updateTask(task: TaskInterface) {
     const url = `${environment.baseUrl}/tasks/${task.id}/`;
     try {
-      const updatedTask = await lastValueFrom(this.http.put<TaskInterface>(url, task));
+      const updatedTask = await lastValueFrom(
+        this.http.put<TaskInterface>(url, task)
+      );
       this.filterColumns([updatedTask]);
     } catch (e) {
       console.error('Fehler beim Aktualisieren der Aufgabe!', e);

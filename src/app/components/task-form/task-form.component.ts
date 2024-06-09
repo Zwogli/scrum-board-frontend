@@ -16,14 +16,21 @@ export class TaskFormComponent {
 
   formTitle: string = '';
   formDescription: string = '';
-  selectedColumn: string = '';
-  selectedColor: string = '';
-  selectedPriority: string = '';
+  selectedColumn: string = 'board-column-todo';
+  selectedColor: string = 'red';
+  selectedPriority: string = 'low';
   dueDate: string = '';
 
   constructor(private overlayService: OverlayService) {}
 
   ngOnInit() {
+    if (!this.task) {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = (today.getMonth() + 1).toString().padStart(2, '0');
+      const day = today.getDate().toString().padStart(2, '0');
+      this.dueDate = `${year}-${month}-${day}`;
+    }
     if (this.isEditMode && this.task) {
       this.formTitle = this.task.title;
       this.formDescription = this.task.description;
@@ -32,6 +39,8 @@ export class TaskFormComponent {
       this.selectedPriority = this.task.priority;
       this.dueDate = this.task.due_date;
     }
+    console.log(this.task?.due_date);
+    
   }
 
   onSelectedColumnChange(column: string) {
@@ -59,14 +68,24 @@ export class TaskFormComponent {
         board_column: this.selectedColumn,
         color: this.selectedColor,
         priority: this.selectedPriority,
-        due_date: this.dueDate,
-        created_at: this.task?.created_at || new Date().toISOString(),
+        due_date: this.formatDate(this.dueDate),
+        created_at:
+          this.task?.created_at || new Date().toISOString().split('T')[0],
         author: this.task?.author || 0,
         author_username: this.task?.author_username || 'anonymous',
         id: this.task?.id ?? 0,
       };
       this.formSubmit.emit(taskData);
+      console.log('Submit TaskForm: ', taskData);
     }
+  }
+
+  formatDate(date: string): string {
+    const d = new Date(date);
+    const month = ('0' + (d.getMonth() + 1)).slice(-2);
+    const day = ('0' + d.getDate()).slice(-2);
+    const year = d.getFullYear();
+    return `${year}-${month}-${day}`;
   }
 
   toggleOverlay() {
