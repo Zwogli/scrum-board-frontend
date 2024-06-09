@@ -29,9 +29,9 @@ export class DeleteTaskComponent {
 
   async confirmDeleteTask() {
     if (this.currentTaskId !== null) {
-      // const url = `${environment.baseUrl}/tasks/${this.currentTaskId}/`;
+      const uri = `${environment.baseUrl}/tasks/${this.currentTaskId}/`;
       try {
-        // await lastValueFrom(this.http.delete(url));
+        await lastValueFrom(this.http.delete(uri));
         console.log(this.currentTaskId);
 
         // Notify the BoardComponent to update the task list
