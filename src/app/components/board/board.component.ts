@@ -26,6 +26,9 @@ export class BoardComponent {
   overlayDeleteTaskState: boolean = false;
   overlayEditTaskState: boolean = false;
 
+  currentTask: TaskInterface | null = null;
+  isEditMode: boolean = false;
+
   constructor(
     private http: HttpClient,
     private overlayService: OverlayService,
@@ -87,6 +90,8 @@ export class BoardComponent {
 
   // Overlay manager
   toggleNewTaskOverlay() {
+    this.currentTask = null;
+    this.isEditMode = false;
     this.overlayService.toggleOverlayNewTask();
   }
 
@@ -95,7 +100,9 @@ export class BoardComponent {
     this.overlayService.toggleOverlayDeleteTask();
   }
 
-  toggleEditTaskOverlay(taskId: number | null) {
+  toggleEditTaskOverlay(task: TaskInterface) {
+    this.currentTask = task;
+    this.isEditMode = true;
     this.overlayService.toggleOverlayEditTask();
   }
 
@@ -107,5 +114,35 @@ export class BoardComponent {
         this.filterColumns(this.allTasks);
       }
     });
+  }
+
+  async submitTask(task: TaskInterface) {
+    if (this.isEditMode) {
+      await this.updateTask(task);
+    } else {
+      await this.createTask(task);
+    }
+    this.overlayService.toggleOverlayNewTask();
+  }
+
+  async createTask(task: TaskInterface) {
+    const url = `${environment.baseUrl}/tasks/`;
+    try {
+      const newTask = await lastValueFrom(this.http.post<TaskInterface>(url, task));
+      this.allTasks.push(newTask);
+      this.filterColumns(this.allTasks);
+    } catch (e) {
+      console.error('Fehler beim Erstellen der Aufgabe!', e);
+    }
+  }
+
+  async updateTask(task: TaskInterface) {
+    const url = `${environment.baseUrl}/tasks/${task.id}/`;
+    try {
+      const updatedTask = await lastValueFrom(this.http.put<TaskInterface>(url, task));
+      this.filterColumns([updatedTask]);
+    } catch (e) {
+      console.error('Fehler beim Aktualisieren der Aufgabe!', e);
+    }
   }
 }

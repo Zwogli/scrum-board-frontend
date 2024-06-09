@@ -35,7 +35,7 @@
           </div>
           <div class="card-row">
             <button
-              (click)="toggleEditTaskOverlay(task.id)"
+              (click)="toggleEditTaskOverlay(task)"
               class="btn btn-primary btn-card"
             >
               Bearbeiten
@@ -89,7 +89,7 @@
           </div>
           <div class="card-row">
             <button
-              (click)="toggleEditTaskOverlay(task.id)"
+              (click)="toggleEditTaskOverlay(task)"
               class="btn btn-primary btn-card"
             >
               Bearbeiten
@@ -143,7 +143,7 @@
           </div>
           <div class="card-row">
             <button
-              (click)="toggleEditTaskOverlay(task.id)"
+              (click)="toggleEditTaskOverlay(task)"
               class="btn btn-primary btn-card"
             >
               Bearbeiten
@@ -197,7 +197,7 @@
           </div>
           <div class="card-row">
             <button
-              (click)="toggleEditTaskOverlay(task.id)"
+              (click)="toggleEditTaskOverlay(task)"
               class="btn btn-primary btn-card"
             >
               Bearbeiten
@@ -215,6 +215,12 @@
   </div>
 </div>
 
-<app-new-task *ngIf="overlayNewTaskState"></app-new-task>
+<app-task-form
+  *ngIf="overlayNewTaskState || overlayEditTaskState"
+  [task]="currentTask"
+  [isEditMode]="isEditMode"
+  (formSubmit)="submitTask($event)"
+></app-task-form>
+
 <app-delete-task *ngIf="overlayDeleteTaskState"></app-delete-task>
-<app-edit-task *ngIf="overlayEditTaskState"></app-edit-task>
+

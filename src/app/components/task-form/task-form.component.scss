@@ -1,0 +1,59 @@
+app-new-task-prio {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .overlay {
+    width: 100dvw;
+    height: 100dvh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-overlay);
+    backdrop-filter: blur(2px);
+  }
+  
+  .card {
+    width: 50dvw;
+    min-width: 300px;
+    max-width: 800px;
+    .container {
+      display: flex;
+      justify-content: flex-end;
+      button {
+        margin-top: 1rem;
+      }
+    }
+  }
+  .container--form-select {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  app-select-column,
+  app-select-color {
+    width: 45%;
+  }
+  
+  .card-body__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      height: 30px;
+      width: 30px;
+      cursor: pointer;
+    }
+  }
+  
+  input.ng-invalid.ng-touched,
+  input.ng-invalid.ng-dirty,
+  input.ng-invalid.ng-submitted {
+    border: 1px solid red;
+  }
+  
