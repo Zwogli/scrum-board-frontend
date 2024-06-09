@@ -32,7 +32,6 @@ export class DeleteTaskComponent {
       const uri = `${environment.baseUrl}/tasks/${this.currentTaskId}/`;
       try {
         await lastValueFrom(this.http.delete(uri));
-        console.log(this.currentTaskId);
 
         // Notify the BoardComponent to update the task list
         this.overlayService.toggleOverlayDeleteTask();
