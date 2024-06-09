@@ -47,7 +47,7 @@
   
           <div class="container--form-select">
             <app-new-task-prio (priorityChange)="updatePriority($event)"></app-new-task-prio>
-            <app-new-task-due-date (dueDateChange)="onDueDateChange($event)" [parentSubmitted]="submitted"></app-new-task-due-date>
+            <app-task-form-due-date (dueDateChange)="onDueDateChange($event)" [parentSubmitted]="submitted"></app-task-form-due-date>
           </div>
   
           <div class="container">

@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-new-task-due-date',
-  templateUrl: './new-task-due-date.component.html',
-  styleUrl: './new-task-due-date.component.scss',
+  selector: 'app-task-form-due-date',
+  templateUrl: './task-form-due-date.component.html',
+  styleUrl: './task-form-due-date.component.scss',
 })
-export class NewTaskDueDateComponent {
+export class TaskFormDueDateComponent {
   @Output() dueDateChange = new EventEmitter<string>();
   @Input() parentSubmitted = false;
   isInvalid = false;

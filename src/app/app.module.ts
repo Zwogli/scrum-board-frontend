@@ -11,11 +11,10 @@ import { BoardComponent } from './components/board/board.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { AuthIntercepterService } from './services/auth-intercepter/auth-intercepter.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { NewTaskComponent } from './components/new-task/new-task.component';
 import { NewTaskPrioComponent } from './components/new-task-prio/new-task-prio.component';
 import { SelectColorComponent } from './components/select-color/select-color.component';
 import { SelectColumnComponent } from './components/select-column/select-column.component';
-import { NewTaskDueDateComponent } from './components/new-task-due-date/new-task-due-date.component';
+import { TaskFormDueDateComponent } from './components/task-form-due-date/task-form-due-date.component';
 import { DeleteTaskComponent } from './components/delete-task/delete-task.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
 
@@ -27,13 +26,12 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
     BoardComponent,
     ContactsComponent,
     NavbarComponent,
-    NewTaskComponent,
     NewTaskPrioComponent,
     SelectColorComponent,
     SelectColumnComponent,
-    NewTaskDueDateComponent,
     DeleteTaskComponent,
     TaskFormComponent,
+    TaskFormDueDateComponent,
   ],
   imports: [
     BrowserModule,
