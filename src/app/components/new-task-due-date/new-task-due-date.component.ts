@@ -30,7 +30,6 @@ export class NewTaskDueDateComponent {
 
     this.minDate = `${year}-${month}-${day}`;
     this.dueDate = this.minDate;
-    console.log('dueDate: ', this.dueDate);
   }
 
   onDueDateChange(event: any) {

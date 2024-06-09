@@ -39,8 +39,6 @@ export class TaskFormComponent {
       this.selectedPriority = this.task.priority;
       this.dueDate = this.task.due_date;
     }
-    console.log(this.task?.due_date);
-    
   }
 
   onSelectedColumnChange(column: string) {
@@ -76,7 +74,6 @@ export class TaskFormComponent {
         id: this.task?.id ?? 0,
       };
       this.formSubmit.emit(taskData);
-      console.log('Submit TaskForm: ', taskData);
     }
   }
 
