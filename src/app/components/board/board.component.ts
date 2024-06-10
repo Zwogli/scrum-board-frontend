@@ -47,10 +47,8 @@ export class BoardComponent {
     });
 
     try {
-      this.allTasks = await this.loadAllTasks();
-      this.filterColumns(this.allTasks);
-      // console.log('Task Object: ', this.allTasks);
-      this.setupWebSocket();
+      this.updateColumns();
+      // this.setupWebSocket();
     } catch (e) {
       this.error = 'Fehler beim Laden!';
     }
@@ -59,17 +57,17 @@ export class BoardComponent {
   loadAllTasks() {
     /**
      * Subscribe with "lastValueFrom" the http.get() Observable
-     */
+    */
     const url = environment.baseUrl + '/tasks/';
     return lastValueFrom(
-      this.http.get(url) //, {headers: headers,}
+      this.http.get(url)
     );
   }
 
   filterColumns(tasksObj: TaskInterface[]) {
     /**
      * Filter all objects for visual display in the correct column
-     */
+    */
     this.todoTasks = tasksObj.filter(
       (task) => task.board_column === 'board-column-todo'
     );
@@ -106,24 +104,25 @@ export class BoardComponent {
     this.overlayService.toggleOverlayEditTask();
   }
 
-  setupWebSocket() {
-    this.websocketService.getMessages().subscribe((message) => {
-      console.log('Received message:', message);
-      if (message && message.task) {
-        this.allTasks.push(message.task);
-        this.filterColumns(this.allTasks);
-      }
-    });
-  }
+  // setupWebSocket() {
+  //   this.websocketService.getMessages().subscribe((message) => {
+  //     console.log('Received message:', message);
+  //     if (message && message.task) {
+  //       this.allTasks.push(message.task);
+  //       this.filterColumns(this.allTasks);
+  //     }
+  //   });
+  // }
 
   async submitTask(task: TaskInterface) {
     if (this.isEditMode) {
       await this.updateTask(task);
+      this.overlayService.toggleOverlayEditTask();
+      this.isEditMode = false;
     } else {
       await this.createTask(task);
+      this.overlayService.toggleOverlayNewTask();
     }
-    this.overlayService.toggleOverlayNewTask();
-    this.isEditMode = false;
   }
 
   async createTask(task: TaskInterface) {
@@ -146,8 +145,14 @@ export class BoardComponent {
         this.http.put<TaskInterface>(url, task)
       );
       this.filterColumns([updatedTask]);
+      this.updateColumns();
     } catch (e) {
       console.error('Fehler beim Aktualisieren der Aufgabe!', e);
     }
+  }
+
+  async updateColumns() {
+    this.allTasks = await this.loadAllTasks();
+    this.filterColumns(this.allTasks);
   }
 }

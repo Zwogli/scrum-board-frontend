@@ -10,15 +10,15 @@ export class TaskFormDueDateComponent {
   @Output() dueDateChange = new EventEmitter<string>();
   @Input() parentSubmitted = false;
   isInvalid = false;
-  dateForm: FormGroup;
+  // dateForm: FormGroup;
   minDate: string = new Date().toISOString().split('T')[0]; // Das aktuelle Datum im ISO-Format ohne Zeit;
   dueDate: string = this.minDate;
 
   constructor(private fb: FormBuilder) {
     // Initialisiere das FormGroup im Konstruktor
-    this.dateForm = this.fb.group({
-      date: [''],
-    });
+    // this.dateForm = this.fb.group({
+    //   date: [''],
+    // });
   }
 
   ngOnInit(): void {
