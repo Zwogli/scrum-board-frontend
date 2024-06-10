@@ -3,7 +3,7 @@
   <input
     id="due-date"
     type="date"
-    [value]="minDate"
+    [value]="dueDate"
     [min]="minDate"
     (change)="onDueDateChange($event)"
     [ngClass]="{'input-border-error': isInvalid && parentSubmitted}"
@@ -12,4 +12,3 @@
     Das Datum muss in der Zukunft liegen.
   </div>
 </div>
-

@@ -1,14 +1,38 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, forwardRef, Output, EventEmitter } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-new-task-prio',
   templateUrl: './new-task-prio.component.html',
-  styleUrls: ['./new-task-prio.component.scss']
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => NewTaskPrioComponent),
+      multi: true,
+    },
+  ],
 })
-export class NewTaskPrioComponent {
-  @Output() priorityChange = new EventEmitter<string>();
+export class NewTaskPrioComponent implements ControlValueAccessor {
+  selectedPriority: string = 'low';
+
+  onChange: any = () => {};
+  onTouched: any = () => {};
+
+  writeValue(value: string): void {
+    this.selectedPriority = value;
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
 
   setPriority(priority: string) {
-    this.priorityChange.emit(priority);
+    this.selectedPriority = priority;
+    this.onChange(priority);
+    this.onTouched();
   }
 }

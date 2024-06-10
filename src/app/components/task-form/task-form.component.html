@@ -61,13 +61,14 @@
 
         <div class="container--form-select">
           <app-new-task-prio
-            (priorityChange)="updatePriority($event)"
+            [(ngModel)]="selectedPriority"
+            name="priority"
           ></app-new-task-prio>
 
           <app-task-form-due-date
-            (dueDateChange)="onDueDateChange($event)"
+            [(ngModel)]="dueDate"
+            name="due_date"
             [parentSubmitted]="submitted"
-            [dueDate]="dueDate"
           ></app-task-form-due-date>
         </div>
 

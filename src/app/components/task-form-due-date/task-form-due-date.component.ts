@@ -1,43 +1,46 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-task-form-due-date',
   templateUrl: './task-form-due-date.component.html',
-  styleUrl: './task-form-due-date.component.scss',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => TaskFormDueDateComponent),
+      multi: true,
+    },
+  ],
 })
-export class TaskFormDueDateComponent {
-  @Output() dueDateChange = new EventEmitter<string>();
+export class TaskFormDueDateComponent implements ControlValueAccessor {
   @Input() parentSubmitted = false;
-  @Input() dueDate: string = '';
   isInvalid = false;
-  minDate: string = new Date().toISOString().split('T')[0]; // Das aktuelle Datum im ISO-Format ohne Zeit;
+  minDate: string = new Date().toISOString().split('T')[0];
+  dueDate: string = this.minDate;
 
+  onChange: any = () => {};
+  onTouched: any = () => {};
 
-  constructor() {}
+  writeValue(value: string): void {
+    this.dueDate = value;
+  }
 
-  ngOnInit(): void {
-    // Setze das aktuelle Datum als minDate im Format yyyy-MM-dd
-    const today = new Date();
-    const day = String(today.getDate()).padStart(2, '0');
-    const month = String(today.getMonth() + 1).padStart(2, '0'); // Monate sind 0-basiert
-    const year = today.getFullYear();
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
 
-    this.minDate = `${year}-${month}-${day}`;
-    if (!this.dueDate) {
-      this.dueDate = this.minDate;
-      console.log('Check DueDtae: ', this.dueDate);
-    }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
   }
 
   onDueDateChange(event: any) {
-    // const selectedDate = event.target.value;
-    // this.dueDateChange.emit(selectedDate);
     const selectedDate = event.target.value;
     const comparableSelectedDate = selectedDate.replace(/-/g, '');
     const comparableMinDate = this.minDate.replace(/-/g, '');
 
     this.isInvalid = comparableSelectedDate < comparableMinDate;
-    this.dueDateChange.emit(event.target.value);
+    this.dueDate = selectedDate;
+    this.onChange(selectedDate);
+    this.onTouched();
   }
 }

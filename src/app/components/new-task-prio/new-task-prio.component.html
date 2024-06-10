@@ -5,10 +5,11 @@
       <input
         class="form-check-input"
         type="radio"
-        name="priority"
+        name="flexRadioDefault"
         id="radioLow"
+        [value]="'low'"
+        [(ngModel)]="selectedPriority"
         (change)="setPriority('low')"
-        checked
       />
       <label class="form-check-label" for="radioLow"> Low </label>
     </div>
@@ -16,8 +17,10 @@
       <input
         class="form-check-input"
         type="radio"
-        name="priority"
+        name="flexRadioDefault"
         id="radioMiddle"
+        [value]="'mid'"
+        [(ngModel)]="selectedPriority"
         (change)="setPriority('mid')"
       />
       <label class="form-check-label" for="radioMiddle"> Middle </label>
@@ -26,8 +29,10 @@
       <input
         class="form-check-input"
         type="radio"
-        name="priority"
+        name="flexRadioDefault"
         id="radioHigh"
+        [value]="'high'"
+        [(ngModel)]="selectedPriority"
         (change)="setPriority('high')"
       />
       <label class="form-check-label" for="radioHigh"> High </label>
