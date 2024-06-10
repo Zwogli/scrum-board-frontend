@@ -51,6 +51,11 @@ export class BoardComponent {
     }
   }
 
+  async updateColumns() {
+    this.allTasks = await this.loadAllTasks();
+    this.filterColumns(this.allTasks);
+  }
+
   loadAllTasks() {
     /**
      * Subscribe with "lastValueFrom" the http.get() Observable
@@ -136,8 +141,4 @@ export class BoardComponent {
     }
   }
 
-  async updateColumns() {
-    this.allTasks = await this.loadAllTasks();
-    this.filterColumns(this.allTasks);
-  }
 }
