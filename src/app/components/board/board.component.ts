@@ -4,7 +4,6 @@ import { environment } from '../../../environments/environment';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { OverlayService } from '../../services/overlay/overlay.service';
-import { WebSocketService } from '../../services/websocket/websocket.service';
 
 @Component({
   selector: 'app-board',
@@ -32,7 +31,6 @@ export class BoardComponent {
   constructor(
     private http: HttpClient,
     private overlayService: OverlayService,
-    private websocketService: WebSocketService
   ) {}
 
   async ngOnInit() {
@@ -48,7 +46,6 @@ export class BoardComponent {
 
     try {
       this.updateColumns();
-      // this.setupWebSocket();
     } catch (e) {
       this.error = 'Fehler beim Laden!';
     }
@@ -57,17 +54,15 @@ export class BoardComponent {
   loadAllTasks() {
     /**
      * Subscribe with "lastValueFrom" the http.get() Observable
-    */
+     */
     const url = environment.baseUrl + '/tasks/';
-    return lastValueFrom(
-      this.http.get(url)
-    );
+    return lastValueFrom(this.http.get(url));
   }
 
   filterColumns(tasksObj: TaskInterface[]) {
     /**
      * Filter all objects for visual display in the correct column
-    */
+     */
     this.todoTasks = tasksObj.filter(
       (task) => task.board_column === 'board-column-todo'
     );
@@ -102,18 +97,7 @@ export class BoardComponent {
     this.currentTask = task;
     this.isEditMode = true;
     this.overlayService.toggleOverlayEditTask();
-    console.log('Open EditTask board: ', this.currentTask);
   }
-
-  // setupWebSocket() {
-  //   this.websocketService.getMessages().subscribe((message) => {
-  //     console.log('Received message:', message);
-  //     if (message && message.task) {
-  //       this.allTasks.push(message.task);
-  //       this.filterColumns(this.allTasks);
-  //     }
-  //   });
-  // }
 
   async submitTask(task: TaskInterface) {
     if (this.isEditMode) {

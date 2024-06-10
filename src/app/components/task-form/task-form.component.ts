@@ -97,7 +97,6 @@ export class TaskFormComponent {
         id: this.task?.id ?? 0,
       };
       this.formSubmit.emit(taskData);
-      console.log('Submit TaskForm: ', taskData);
     }
   }
 
