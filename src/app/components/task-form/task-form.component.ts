@@ -26,8 +26,7 @@ export class TaskFormComponent {
   ngOnInit() {
     if (this.isEmptyTask()) {
       this.setDueDate();
-    } 
-    else if(this.isEditTask()) {
+    } else if (this.isEditTask()) {
       this.formTitle = this.task!.title;
       this.formDescription = this.task!.description;
       this.selectedColumn = this.task!.board_column;
@@ -41,8 +40,8 @@ export class TaskFormComponent {
     return !this.task;
   }
 
-  isEditTask(){
-    return (this.isEditMode && this.task)
+  isEditTask() {
+    return this.isEditMode && this.task;
   }
 
   setDueDate() {
@@ -80,13 +79,18 @@ export class TaskFormComponent {
         priority: this.selectedPriority,
         due_date: this.formatDate(this.dueDate),
         created_at:
-          this.task?.created_at || new Date().toISOString().split('T')[0],
+          this.task?.created_at || this.setNewDate(),
         author: this.task?.author || 0,
         author_username: this.task?.author_username || 'anonymous',
         id: this.task?.id ?? 0,
       };
       this.formSubmit.emit(taskData);
+      console.log('Submit TaskForm: ', taskData);
     }
+  }
+
+  setNewDate(){
+    return new Date().toISOString().split('T')[0];
   }
 
   formatDate(date: string): string {
