@@ -1,4 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectorRef,
+  SimpleChanges,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TaskInterface } from '../../models.ts/task.model';
 import { OverlayService } from '../../services/overlay/overlay.service';
@@ -21,9 +28,22 @@ export class TaskFormComponent {
   selectedPriority: string = 'low';
   dueDate: string = '';
 
-  constructor(private overlayService: OverlayService) {}
+  constructor(
+    private overlayService: OverlayService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
+    this.initializeForm();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['task']) {
+      this.initializeForm();
+    }
+  }
+
+  initializeForm() {
     if (this.isEmptyTask()) {
       this.setDueDate();
     } else if (this.isEditTask()) {
@@ -34,6 +54,7 @@ export class TaskFormComponent {
       this.selectedPriority = this.task!.priority;
       this.dueDate = this.task!.due_date;
     }
+    this.cdr.detectChanges();
   }
 
   isEmptyTask() {
@@ -42,14 +63,6 @@ export class TaskFormComponent {
 
   isEditTask() {
     return this.isEditMode && this.task;
-  }
-
-  setDueDate() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = (today.getMonth() + 1).toString().padStart(2, '0');
-    const day = today.getDate().toString().padStart(2, '0');
-    this.dueDate = `${year}-${month}-${day}`;
   }
 
   onSelectedColumnChange(column: string) {
@@ -78,8 +91,7 @@ export class TaskFormComponent {
         color: this.selectedColor,
         priority: this.selectedPriority,
         due_date: this.formatDate(this.dueDate),
-        created_at:
-          this.task?.created_at || this.setNewDate(),
+        created_at: this.task?.created_at || this.setNewDate(),
         author: this.task?.author || 0,
         author_username: this.task?.author_username || 'anonymous',
         id: this.task?.id ?? 0,
@@ -89,8 +101,16 @@ export class TaskFormComponent {
     }
   }
 
-  setNewDate(){
+  setNewDate() {
     return new Date().toISOString().split('T')[0];
+  }
+
+  setDueDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    this.dueDate = `${year}-${month}-${day}`;
   }
 
   formatDate(date: string): string {

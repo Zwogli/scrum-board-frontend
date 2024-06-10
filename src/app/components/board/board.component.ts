@@ -102,6 +102,7 @@ export class BoardComponent {
     this.currentTask = task;
     this.isEditMode = true;
     this.overlayService.toggleOverlayEditTask();
+    console.log('Open EditTask board: ', this.currentTask);
   }
 
   // setupWebSocket() {

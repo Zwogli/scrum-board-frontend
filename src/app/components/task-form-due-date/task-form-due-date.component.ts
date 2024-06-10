@@ -9,17 +9,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class TaskFormDueDateComponent {
   @Output() dueDateChange = new EventEmitter<string>();
   @Input() parentSubmitted = false;
+  @Input() dueDate: string = '';
   isInvalid = false;
-  // dateForm: FormGroup;
   minDate: string = new Date().toISOString().split('T')[0]; // Das aktuelle Datum im ISO-Format ohne Zeit;
-  dueDate: string = this.minDate;
 
-  constructor(private fb: FormBuilder) {
-    // Initialisiere das FormGroup im Konstruktor
-    // this.dateForm = this.fb.group({
-    //   date: [''],
-    // });
-  }
+
+  constructor() {}
 
   ngOnInit(): void {
     // Setze das aktuelle Datum als minDate im Format yyyy-MM-dd
@@ -29,11 +24,20 @@ export class TaskFormDueDateComponent {
     const year = today.getFullYear();
 
     this.minDate = `${year}-${month}-${day}`;
-    this.dueDate = this.minDate;
+    if (!this.dueDate) {
+      this.dueDate = this.minDate;
+      console.log('Check DueDtae: ', this.dueDate);
+    }
   }
 
   onDueDateChange(event: any) {
+    // const selectedDate = event.target.value;
+    // this.dueDateChange.emit(selectedDate);
     const selectedDate = event.target.value;
-    this.dueDateChange.emit(selectedDate);
+    const comparableSelectedDate = selectedDate.replace(/-/g, '');
+    const comparableMinDate = this.minDate.replace(/-/g, '');
+
+    this.isInvalid = comparableSelectedDate < comparableMinDate;
+    this.dueDateChange.emit(event.target.value);
   }
 }
