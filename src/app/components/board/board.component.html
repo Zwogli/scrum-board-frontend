@@ -115,7 +115,7 @@
     <ul id="board-column-feedback">
       <li
         *ngFor="let task of feedbackTasks"
-        [style.backgroundColor]="task.color"
+        [style.backgroundColor]="getCardBackgroundColor(task.color)"
         class="card"
       >
         <h5 class="card-title">{{ task.title }}</h5>
@@ -169,7 +169,7 @@
     <ul id="board-column-done">
       <li
         *ngFor="let task of doneTasks"
-        [style.backgroundColor]="task.color"
+        [style.backgroundColor]="getCardBackgroundColor(task.color)"
         class="card"
       >
         <h5 class="card-title">{{ task.title }}</h5>
