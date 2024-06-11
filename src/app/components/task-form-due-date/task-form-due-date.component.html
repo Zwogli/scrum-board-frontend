@@ -1,12 +1,12 @@
 <div>
-  <label for="due-date">Due Date:</label>
+  <label for="due-date">Due Date: </label>
   <input
     id="due-date"
     type="date"
     [value]="dueDate"
     [min]="minDate"
     (change)="onDueDateChange($event)"
-    [ngClass]="{'input-border-error': isInvalid && parentSubmitted}"
+    [ngClass]="{ 'input-border-error': isInvalid && parentSubmitted }"
   />
   <div *ngIf="isInvalid && parentSubmitted" class="error-message">
     Das Datum muss in der Zukunft liegen.

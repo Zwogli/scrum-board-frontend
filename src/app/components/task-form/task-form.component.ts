@@ -83,6 +83,10 @@ export class TaskFormComponent {
 
   submitForm(form: NgForm) {
     this.submitted = true;
+    // Check if the due date is valid
+    if (this.isDueDateInvalid()) {
+      return; // Prevent form submission if due date is invalid
+    }
     if (form.valid) {
       const taskData: TaskInterface = {
         title: this.formTitle,
@@ -98,6 +102,14 @@ export class TaskFormComponent {
       };
       this.formSubmit.emit(taskData);
     }
+  }
+
+  isDueDateInvalid(): boolean {
+    const selectedDate = new Date(this.dueDate);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Remove time part for comparison
+
+    return selectedDate < today;
   }
 
   setNewDate() {

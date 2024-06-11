@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -14,15 +14,25 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class TaskFormDueDateComponent implements ControlValueAccessor {
   @Input() parentSubmitted = false;
+  @Input() dueDate: string = new Date().toISOString().split('T')[0];
   isInvalid = false;
   minDate: string = new Date().toISOString().split('T')[0];
-  dueDate: string = this.minDate;
 
   onChange: any = () => {};
   onTouched: any = () => {};
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['dueDate']) {
+      this.validateDate();
+    }
+    if (changes['parentSubmitted'] && this.parentSubmitted) {
+      this.validateDate();
+    }
+  }
+
   writeValue(value: string): void {
     this.dueDate = value;
+    this.validateDate();
   }
 
   registerOnChange(fn: any): void {
@@ -34,13 +44,17 @@ export class TaskFormDueDateComponent implements ControlValueAccessor {
   }
 
   onDueDateChange(event: any) {
-    const selectedDate = event.target.value;
-    const comparableSelectedDate = selectedDate.replace(/-/g, '');
-    const comparableMinDate = this.minDate.replace(/-/g, '');
-
-    this.isInvalid = comparableSelectedDate < comparableMinDate;
-    this.dueDate = selectedDate;
-    this.onChange(selectedDate);
+    this.dueDate = event.target.value;
+    this.validateDate();
+    this.onChange(this.dueDate);
     this.onTouched();
+  }
+
+  validateDate() {
+    const selectedDate = new Date(this.dueDate);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Remove time part for comparison
+
+    this.isInvalid = selectedDate < today;
   }
 }
