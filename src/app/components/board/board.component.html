@@ -8,50 +8,53 @@
         +
       </button>
     </div>
-    <ul id="board-column-todo">
-      <li
-        *ngFor="let task of todoTasks"
-        [style.backgroundColor]="getCardBackgroundColor(task.color)"
-        class="card"
-      >
-        <h5 class="card-title">{{ task.title }}</h5>
-        <p class="card-text">{{ task.description }}</p>
-        <div class="card-body">
-          <div class="card-body--section">
-            <p class="card-text--info">
-              <span>Erstell von: </span><span>{{ task.author_username }}</span>
-            </p>
-            <p class="card-text--info">
-              <span>Erstellt am: </span><span>{{ task.created_at }}</span>
-            </p>
-          </div>
+    <div class="column-container--tasks">
+      <ul id="board-column-todo">
+        <li
+          *ngFor="let task of todoTasks"
+          [style.backgroundColor]="getCardBackgroundColor(task.color)"
+          class="card"
+        >
+          <h5 class="card-title">{{ task.title }}</h5>
+          <p class="card-text">{{ task.description }}</p>
+          <div class="card-body">
+            <div class="card-body--section">
+              <p class="card-text--info">
+                <span>Erstell von: </span
+                ><span>{{ task.author_username }}</span>
+              </p>
+              <p class="card-text--info">
+                <span>Erstellt am: </span><span>{{ task.created_at }}</span>
+              </p>
+            </div>
 
-          <div class="card-body--section">
-            <p class="card-text--info">
-              <span>Priorität: </span><span>{{ task.priority }}</span>
-            </p>
-            <p class="card-text--info">
-              <span>Fällig am: </span><span>{{ task.due_date }}</span>
-            </p>
-          </div>
+            <div class="card-body--section">
+              <p class="card-text--info">
+                <span>Priorität: </span><span>{{ task.priority }}</span>
+              </p>
+              <p class="card-text--info">
+                <span>Fällig am: </span><span>{{ task.due_date }}</span>
+              </p>
+            </div>
 
-          <div class="card-row">
-            <button
-              (click)="toggleEditTaskOverlay(task)"
-              class="btn btn-primary btn-card"
-            >
-              Bearbeiten
-            </button>
-            <button
-              (click)="toggleDeleteTaskOverlay(task.id)"
-              class="btn btn-danger btn-card"
-            >
-              Löschen
-            </button>
+            <div class="card-row">
+              <button
+                (click)="toggleEditTaskOverlay(task)"
+                class="btn btn-primary btn-card"
+              >
+                Bearbeiten
+              </button>
+              <button
+                (click)="toggleDeleteTaskOverlay(task.id)"
+                class="btn btn-danger btn-card"
+              >
+                Löschen
+              </button>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="column">
@@ -61,49 +64,52 @@
         +
       </button>
     </div>
-    <ul id="board-column-progress">
-      <li
-        *ngFor="let task of progressTasks"
-        [style.backgroundColor]="getCardBackgroundColor(task.color)"
-        class="card card-color"
-      >
-        <h5 class="card-title">{{ task.title }}</h5>
-        <p class="card-text">{{ task.description }}</p>
-        <div class="card-body">
-          <div class="card-body--section">
-            <p class="card-text--info">
-              <span>Erstell von: </span><span>{{ task.author_username }}</span>
-            </p>
-            <p class="card-text--info">
-              <span>Erstellt am: </span><span>{{ task.created_at }}</span>
-            </p>
-          </div>
+    <div class="column-container--tasks">
+      <ul id="board-column-progress">
+        <li
+          *ngFor="let task of progressTasks"
+          [style.backgroundColor]="getCardBackgroundColor(task.color)"
+          class="card card-color"
+        >
+          <h5 class="card-title">{{ task.title }}</h5>
+          <p class="card-text">{{ task.description }}</p>
+          <div class="card-body">
+            <div class="card-body--section">
+              <p class="card-text--info">
+                <span>Erstell von: </span
+                ><span>{{ task.author_username }}</span>
+              </p>
+              <p class="card-text--info">
+                <span>Erstellt am: </span><span>{{ task.created_at }}</span>
+              </p>
+            </div>
 
-          <div class="card-body--section">
-            <p class="card-text--info">
-              <span>Priorität: </span><span>{{ task.priority }}</span>
-            </p>
-            <p class="card-text--info">
-              <span>Fällig am: </span><span>{{ task.due_date }}</span>
-            </p>
+            <div class="card-body--section">
+              <p class="card-text--info">
+                <span>Priorität: </span><span>{{ task.priority }}</span>
+              </p>
+              <p class="card-text--info">
+                <span>Fällig am: </span><span>{{ task.due_date }}</span>
+              </p>
+            </div>
+            <div class="card-row">
+              <button
+                (click)="toggleEditTaskOverlay(task)"
+                class="btn btn-primary btn-card"
+              >
+                Bearbeiten
+              </button>
+              <button
+                (click)="toggleDeleteTaskOverlay(task.id)"
+                class="btn btn-danger btn-card"
+              >
+                Löschen
+              </button>
+            </div>
           </div>
-          <div class="card-row">
-            <button
-              (click)="toggleEditTaskOverlay(task)"
-              class="btn btn-primary btn-card"
-            >
-              Bearbeiten
-            </button>
-            <button
-              (click)="toggleDeleteTaskOverlay(task.id)"
-              class="btn btn-danger btn-card"
-            >
-              Löschen
-            </button>
-          </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="column">
@@ -113,49 +119,52 @@
         +
       </button>
     </div>
-    <ul id="board-column-feedback">
-      <li
-        *ngFor="let task of feedbackTasks"
-        [style.backgroundColor]="getCardBackgroundColor(task.color)"
-        class="card"
-      >
-        <h5 class="card-title">{{ task.title }}</h5>
-        <p class="card-text">{{ task.description }}</p>
-        <div class="card-body">
-          <div class="card-body--section">
-            <p class="card-text--info">
-              <span>Erstell von: </span><span>{{ task.author_username }}</span>
-            </p>
-            <p class="card-text--info">
-              <span>Erstellt am: </span><span>{{ task.created_at }}</span>
-            </p>
-          </div>
+    <div class="column-container--tasks">
+      <ul id="board-column-feedback">
+        <li
+          *ngFor="let task of feedbackTasks"
+          [style.backgroundColor]="getCardBackgroundColor(task.color)"
+          class="card"
+        >
+          <h5 class="card-title">{{ task.title }}</h5>
+          <p class="card-text">{{ task.description }}</p>
+          <div class="card-body">
+            <div class="card-body--section">
+              <p class="card-text--info">
+                <span>Erstell von: </span
+                ><span>{{ task.author_username }}</span>
+              </p>
+              <p class="card-text--info">
+                <span>Erstellt am: </span><span>{{ task.created_at }}</span>
+              </p>
+            </div>
 
-          <div class="card-body--section">
-            <p class="card-text--info">
-              <span>Priorität: </span><span>{{ task.priority }}</span>
-            </p>
-            <p class="card-text--info">
-              <span>Fällig am: </span><span>{{ task.due_date }}</span>
-            </p>
+            <div class="card-body--section">
+              <p class="card-text--info">
+                <span>Priorität: </span><span>{{ task.priority }}</span>
+              </p>
+              <p class="card-text--info">
+                <span>Fällig am: </span><span>{{ task.due_date }}</span>
+              </p>
+            </div>
+            <div class="card-row">
+              <button
+                (click)="toggleEditTaskOverlay(task)"
+                class="btn btn-primary btn-card"
+              >
+                Bearbeiten
+              </button>
+              <button
+                (click)="toggleDeleteTaskOverlay(task.id)"
+                class="btn btn-danger btn-card"
+              >
+                Löschen
+              </button>
+            </div>
           </div>
-          <div class="card-row">
-            <button
-              (click)="toggleEditTaskOverlay(task)"
-              class="btn btn-primary btn-card"
-            >
-              Bearbeiten
-            </button>
-            <button
-              (click)="toggleDeleteTaskOverlay(task.id)"
-              class="btn btn-danger btn-card"
-            >
-              Löschen
-            </button>
-          </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="column">
@@ -165,49 +174,52 @@
         +
       </button>
     </div>
-    <ul id="board-column-done">
-      <li
-        *ngFor="let task of doneTasks"
-        [style.backgroundColor]="getCardBackgroundColor(task.color)"
-        class="card"
-      >
-        <h5 class="card-title">{{ task.title }}</h5>
-        <p class="card-text">{{ task.description }}</p>
-        <div class="card-body">
-          <div class="card-body--section">
-            <p class="card-text--info">
-              <span>Erstell von: </span><span>{{ task.author_username }}</span>
-            </p>
-            <p class="card-text--info">
-              <span>Erstellt am: </span><span>{{ task.created_at }}</span>
-            </p>
-          </div>
+    <div class="column-container--tasks">
+      <ul id="board-column-done">
+        <li
+          *ngFor="let task of doneTasks"
+          [style.backgroundColor]="getCardBackgroundColor(task.color)"
+          class="card"
+        >
+          <h5 class="card-title">{{ task.title }}</h5>
+          <p class="card-text">{{ task.description }}</p>
+          <div class="card-body">
+            <div class="card-body--section">
+              <p class="card-text--info">
+                <span>Erstell von: </span
+                ><span>{{ task.author_username }}</span>
+              </p>
+              <p class="card-text--info">
+                <span>Erstellt am: </span><span>{{ task.created_at }}</span>
+              </p>
+            </div>
 
-          <div class="card-body--section">
-            <p class="card-text--info">
-              <span>Priorität: </span><span>{{ task.priority }}</span>
-            </p>
-            <p class="card-text--info">
-              <span>Fällig am: </span><span>{{ task.due_date }}</span>
-            </p>
+            <div class="card-body--section">
+              <p class="card-text--info">
+                <span>Priorität: </span><span>{{ task.priority }}</span>
+              </p>
+              <p class="card-text--info">
+                <span>Fällig am: </span><span>{{ task.due_date }}</span>
+              </p>
+            </div>
+            <div class="card-row">
+              <button
+                (click)="toggleEditTaskOverlay(task)"
+                class="btn btn-primary btn-card"
+              >
+                Bearbeiten
+              </button>
+              <button
+                (click)="toggleDeleteTaskOverlay(task.id)"
+                class="btn btn-danger btn-card"
+              >
+                Löschen
+              </button>
+            </div>
           </div>
-          <div class="card-row">
-            <button
-              (click)="toggleEditTaskOverlay(task)"
-              class="btn btn-primary btn-card"
-            >
-              Bearbeiten
-            </button>
-            <button
-              (click)="toggleDeleteTaskOverlay(task.id)"
-              class="btn btn-danger btn-card"
-            >
-              Löschen
-            </button>
-          </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
