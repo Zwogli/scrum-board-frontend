@@ -17,22 +17,24 @@
         <h5 class="card-title">{{ task.title }}</h5>
         <p class="card-text">{{ task.description }}</p>
         <div class="card-body">
-          <div class="card-row">
+          <div class="card-body--section">
             <p class="card-text--info">
-              Erstell von: {{ task.author_username }}
-            </p>
-            <p class="card-text--info">Priorität: {{ task.priority }}</p>
-          </div>
-          <div class="card-row">
-            <p class="card-text--info">
-              Erstellt am:<br />
-              {{ task.created_at }}
+              <span>Erstell von: </span><span>{{ task.author_username }}</span>
             </p>
             <p class="card-text--info">
-              Fällig am:<br />
-              {{ task.due_date }}
+              <span>Erstellt am: </span><span>{{ task.created_at }}</span>
             </p>
           </div>
+
+          <div class="card-body--section">
+            <p class="card-text--info">
+              <span>Priorität: </span><span>{{ task.priority }}</span>
+            </p>
+            <p class="card-text--info">
+              <span>Fällig am: </span><span>{{ task.due_date }}</span>
+            </p>
+          </div>
+
           <div class="card-row">
             <button
               (click)="toggleEditTaskOverlay(task)"
@@ -51,6 +53,7 @@
       </li>
     </ul>
   </div>
+
   <div class="column">
     <div class="headline">
       <h2>In progress</h2>
@@ -67,24 +70,21 @@
         <h5 class="card-title">{{ task.title }}</h5>
         <p class="card-text">{{ task.description }}</p>
         <div class="card-body">
-          <div class="card-row">
+          <div class="card-body--section">
             <p class="card-text--info">
-              Erstell von:<br />
-              {{ task.author_username }}
+              <span>Erstell von: </span><span>{{ task.author_username }}</span>
             </p>
             <p class="card-text--info">
-              Priorität:<br />
-              {{ task.priority }}
+              <span>Erstellt am: </span><span>{{ task.created_at }}</span>
             </p>
           </div>
-          <div class="card-row">
+
+          <div class="card-body--section">
             <p class="card-text--info">
-              Erstellt am:<br />
-              {{ task.created_at }}
+              <span>Priorität: </span><span>{{ task.priority }}</span>
             </p>
             <p class="card-text--info">
-              Fällig am:<br />
-              {{ task.due_date }}
+              <span>Fällig am: </span><span>{{ task.due_date }}</span>
             </p>
           </div>
           <div class="card-row">
@@ -105,6 +105,7 @@
       </li>
     </ul>
   </div>
+
   <div class="column">
     <div class="headline">
       <h2>Feedback</h2>
@@ -121,24 +122,21 @@
         <h5 class="card-title">{{ task.title }}</h5>
         <p class="card-text">{{ task.description }}</p>
         <div class="card-body">
-          <div class="card-row">
+          <div class="card-body--section">
             <p class="card-text--info">
-              Erstell von:<br />
-              {{ task.author_username }}
+              <span>Erstell von: </span><span>{{ task.author_username }}</span>
             </p>
             <p class="card-text--info">
-              Priorität:<br />
-              {{ task.priority }}
+              <span>Erstellt am: </span><span>{{ task.created_at }}</span>
             </p>
           </div>
-          <div class="card-row">
+
+          <div class="card-body--section">
             <p class="card-text--info">
-              Erstellt am:<br />
-              {{ task.created_at }}
+              <span>Priorität: </span><span>{{ task.priority }}</span>
             </p>
             <p class="card-text--info">
-              Fällig am:<br />
-              {{ task.due_date }}
+              <span>Fällig am: </span><span>{{ task.due_date }}</span>
             </p>
           </div>
           <div class="card-row">
@@ -159,6 +157,7 @@
       </li>
     </ul>
   </div>
+
   <div class="column">
     <div class="headline">
       <h2>Done</h2>
@@ -175,24 +174,21 @@
         <h5 class="card-title">{{ task.title }}</h5>
         <p class="card-text">{{ task.description }}</p>
         <div class="card-body">
-          <div class="card-row">
+          <div class="card-body--section">
             <p class="card-text--info">
-              Erstell von:<br />
-              {{ task.author_username }}
+              <span>Erstell von: </span><span>{{ task.author_username }}</span>
             </p>
             <p class="card-text--info">
-              Priorität:<br />
-              {{ task.priority }}
+              <span>Erstellt am: </span><span>{{ task.created_at }}</span>
             </p>
           </div>
-          <div class="card-row">
+
+          <div class="card-body--section">
             <p class="card-text--info">
-              Erstellt am:<br />
-              {{ task.created_at }}
+              <span>Priorität: </span><span>{{ task.priority }}</span>
             </p>
             <p class="card-text--info">
-              Fällig am:<br />
-              {{ task.due_date }}
+              <span>Fällig am: </span><span>{{ task.due_date }}</span>
             </p>
           </div>
           <div class="card-row">
@@ -223,4 +219,3 @@
 ></app-task-form>
 
 <app-delete-task *ngIf="overlayDeleteTaskState"></app-delete-task>
-
